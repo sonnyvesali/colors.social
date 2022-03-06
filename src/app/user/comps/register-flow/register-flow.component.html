@@ -1,0 +1,49 @@
+<div *ngIf="this.LoginFormService.user | async">
+  <ng-container *ngIf="this.StepperService.chosenUserType === 'Undecided'">
+    <h1 class="welcome-text">Welcome to the Community!</h1>
+    <h3 class="welcome-text">Join as a:</h3>
+  </ng-container>
+  <div *ngIf="this.StepperService.chosenUserType !== 'Undecided'" class="margin-filler"></div>
+  <div>
+    <mat-stepper class="user-tier-container" #stepper>
+      <mat-step class="user-tier-container">
+        <mat-card class="user-tier">
+          <img mat-card-image class="user-pic" src="assets/register-flow-assets/register-user.png">
+          <mat-card-title #User>User</mat-card-title>
+          <mat-card-subtitle>Browse & Save Top Web3 Projects</mat-card-subtitle>
+          <button mat-raised-button color="accent" matStepperNext
+            (click)="this.StepperService.goForward(stepper, User)">
+            Sign in As a User
+          </button>
+        </mat-card>
+        <mat-card class="user-tier">
+          <img mat-card-image class="user-pic" src="assets/register-flow-assets/register-project.png">
+          <mat-card-title #Project>Project</mat-card-title>
+          <mat-card-subtitle>List Your Project & Attract Contributors</mat-card-subtitle>
+          <button mat-raised-button color="accent" (click)="this.StepperService.goForward(stepper, Project)">
+            Sign in as Project
+          </button>
+        </mat-card>
+      </mat-step>
+      <mat-step>
+        <ng-container class="user-form" *ngIf="this.StepperService.chosenUserType === 'User'">
+          <app-create-user-forms></app-create-user-forms>
+        </ng-container>
+        <ng-container *ngIf="this.StepperService.chosenUserType === 'Project'">
+          <mat-card>
+            <app-create-project-form1></app-create-project-form1>
+          </mat-card>
+          <mat-step class="user-tier-container">
+            <mat-card>
+              <app-create-project-form2></app-create-project-form2>
+            </mat-card>
+          </mat-step>
+        </ng-container>
+      </mat-step>
+    </mat-stepper>
+  </div>
+</div>
+
+<!-- 
+  Ok now that we have everything working it's time 
+-->

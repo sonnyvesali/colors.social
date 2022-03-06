@@ -1,0 +1,44 @@
+.form-container {
+    // display: contents;
+    text-align: center;
+    width: clamp(600px, 40vw, 700px);
+}
+
+.back-btn-wrapper {
+
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+
+    .back-btn {
+        height: 20px;
+        width: 20px;
+    }
+}
+
+
+
+
+.mat-form-field {
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // flex-grow: 2;
+    width: 80%;
+    text-align: center;
+    // background-color: greenyellow;
+}
+
+.discord-input {
+    width: 100%;
+    text-align: center;
+}
+
+
+.mat-label {
+    text-align: center;
+}
+
+.submit-btn-wrapper {
+    margin-top: 20px
+}

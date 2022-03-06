@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "colors-ang-web-app-v1": {
+      "hosting": {
+        "colors-v1.4.1": [
+          "colors-ang-web-app-v1"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "colors-ang-web-app-v1"
+  }
+}

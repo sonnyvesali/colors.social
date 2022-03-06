@@ -1,0 +1,6 @@
+      <ng-container class="mat-chip">
+        <mat-chip *ngFor="let niche of range.nichesArr" [selected]="niche.selected"
+          (selectionChange)="changeSelected($event, range.nichesArr)" (click)="niche.selected= !niche.selected">
+          {{niche.name}}
+        </mat-chip>
+      </ng-container>

@@ -1,0 +1,61 @@
+<form [formGroup]="createProfileForm" class="form-container">
+  <div class="back-btn-wrapper">
+    <button class="back-btn" mat-icon-button (click)="this.StepperService.goBack(stepper)">
+      <img src="assets/stepper/back-arrow-icon.svg">
+    </button>
+  </div>
+  <div class="form-field">
+    <mat-label>
+      <h3>
+        What's your First name?
+      </h3>
+    </mat-label>
+    <mat-form-field>
+      <input class="input" placeholder="your name here" matInput formControlName="name">
+    </mat-form-field>
+  </div>
+  <div class="form-field">
+    <mat-label>
+      <h3>What's your Project's Name?</h3>
+    </mat-label>
+    <mat-form-field class="mat-form-field">
+      <input class="input" matInput formControlName="projectName" maxlength="30" placeholder="your project's name"
+        autocomplete="false">
+    </mat-form-field>
+  </div>
+  <div class="form-field text-area-container">
+    <mat-label>
+      <h3>Write a Short Bio for your project</h3>
+    </mat-label>
+    <mat-form-field>
+      <div class="textarea-wrapper">
+        <textarea matInput formControlName="projectBio" maxlength="150"
+          placeholder="Cover essential information about your project" type="text" cdkTextareaAutosize
+          #autosize="cdkTextareaAutosize" [(ngModel)]="value" (ngModelChange)="valueChange(value)"
+          cdkAutosizeMinRows='3' cdkAutosizeMaxRows="15">
+                </textarea>
+      </div>
+      <span class="remaining">{{remainingText}}</span>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-label>Upload Your Project's Logo Here</mat-label>
+    <input class="mat-input" id="fileUpload" type="file" (change)="upload($event)" accept="*.png.jpg.svg">
+  </div>
+  <div>
+    <mat-label>
+      <h3>
+        How would you Categorize your Project?
+      </h3>
+    </mat-label>
+    <mat-chip-list>
+      <app-niche-chips-list></app-niche-chips-list>
+    </mat-chip-list>
+  </div>
+  <div class="submit-btn-wrapper">
+    <button type="submit" mat-raised-button matStepperNext (click)="onFirstStepSubmit()"
+      [disabled]="chipsService.isInCategoryRange() === true || formIsFilledOut() === false">Next
+      Step
+    </button>
+  </div>
+</form>

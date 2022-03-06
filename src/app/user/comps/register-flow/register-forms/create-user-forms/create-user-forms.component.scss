@@ -1,0 +1,47 @@
+.mat-card-container {
+    width: clamp(400px, 70vw, 500px);
+}
+
+.the-mat-form-field {
+    width: 100%;
+    text-align: center;
+}
+
+.back-btn {
+    height: 20px;
+    width: 20px;
+}
+
+.input {
+    width: 250px;
+
+}
+.mat-form-field {
+    display: flex;
+    justify-content: center;
+}
+
+.mat-chip-list {
+    margin: 15px 0;
+    background-color: green;
+
+}
+
+.form-field {
+    width: 100%;
+}
+
+.mat-label {
+    text-align: center;
+    margin-top: 15px;
+}
+.submit-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+}
+
+.mat-chip-list {
+    text-align: center;
+}

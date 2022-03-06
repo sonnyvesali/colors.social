@@ -1,0 +1,30 @@
+      <div class="form-container">
+        <div class="back-btn-wrapper">
+          <button class="back-btn" mat-icon-button (click)="this.StepperService.goBack(stepper)">
+            <img src="assets/stepper/back-arrow-icon.svg">
+          </button>
+        </div>
+        <mat-label class="mat-label">
+          <h3>What types of Contributors do you want to attract? </h3>
+        </mat-label>
+        <mat-chip-list class="mat-chip-list-container">
+          <app-skills-chips-list></app-skills-chips-list>
+        </mat-chip-list>
+        <form [formGroup]="addContributors" class="form-container">
+          <mat-label for="">
+            <h3>
+              Add the link to your Discord Server Here.
+            </h3>
+          </mat-label>
+          <mat-form-field class="mat-form-field">
+            <input class="discord-input" matInput formControlName="discordLink" placeholder="https://discord.gg/"
+              type="url">
+          </mat-form-field>
+          <div class="submit-btn-wrapper">
+            <button routerLink="/" mat-raised-button type="submit" [disabled]="secondFormIsDone()"
+              (click)="onSecondSubmit()">
+              Complete Profile
+            </button>
+          </div>
+        </form>
+      </div>

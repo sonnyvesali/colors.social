@@ -103,6 +103,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "colors-v1.4.1:build:production",
+            "firebaseProject": "colors-ang-web-app-v1",
+            "firebaseHostingSite": "colors-ang-web-app-v1"
+          }
         }
       }
     }

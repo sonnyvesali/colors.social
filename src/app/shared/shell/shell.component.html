@@ -1,0 +1,43 @@
+<mat-sidenav-container>
+  <mat-sidenav-content class="sidenav-content">
+    <mat-toolbar>
+      <a class="header-logo" href="/">
+        <img class="header-logo" src="/assets/misc-assets/header-logo-lgg.png">
+      </a>
+      <span class="filler"></span>
+      <div class="navbar">
+        <div class="navigation-elements">
+          <!--If they're logged out-->
+          <div *ngIf="!(afAuth.authState | async)">
+            <a class="sign-up" mat-flat-button routerLink="/user/login" type="contained">Sign Up!</a>
+          </div>
+          <div *ngIf="afAuth.authState | async as user">
+            <div class="user-info">
+              <!-- <img class="avatar" [src]="user.photoURL">
+              <span class='username'>{{user.displayName}}</span> -->
+
+              <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu='matMenu'>
+                <a mat-menu-item>
+                  <img class="icon-img" src="assets/edit-profile-assets/white-heart.svg">
+                  <span class="nav-text">View Favorites</span>
+                </a>
+                <a mat-menu-item routerLink="/edit-profile">
+                  <img class="icon-img" src="assets/edit-profile-assets/white-settings.svg">
+                  <span class="nav-text">Profile Settings</span>
+                </a>
+                <a mat-menu-item (click)="afAuth.signOut()" routerLink="/">
+                  <img class="icon-img" src="assets/edit-profile-assets/white-logout.svg">
+                  <span class="nav-text">Sign Out</span>
+                </a>
+              </mat-menu>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-toolbar>
+    <ng-component></ng-component>
+  </mat-sidenav-content>
+</mat-sidenav-container>

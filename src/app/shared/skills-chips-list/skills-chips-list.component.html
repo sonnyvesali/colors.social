@@ -1,0 +1,5 @@
+        <mat-chip *ngFor="let skillset of range.skillsetsArr" [selected]="skillset.selected"
+          (selectionChange)="changeSelected($event, range.skillsetsArr)"
+          (click)="skillset.selected = !skillset.selected">
+          {{skillset.name}}
+        </mat-chip>
