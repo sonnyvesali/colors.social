@@ -31,6 +31,10 @@ export class EditProfStepperService {
       this.secondChoice = 'Change your Email';
     } else if (chosenRef?.includes('Change your Name')) {
       this.secondChoice = 'Change your Name';
+    } else if (chosenRef?.includes('View Project Interests')) {
+      this.secondChoice = 'View Project Interests';
+    } else if (chosenRef?.includes('View Skillsets')) {
+      this.secondChoice = 'View Skillsets';
     }
     console.log(this.firstChoice, '1st choice');
     console.log(this.secondChoice, '2nd choice');

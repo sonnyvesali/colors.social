@@ -1,8 +1,11 @@
 <ng-container *ngIf="this.EditProfStepperService.secondChoice === 'Change your Email'">
-  <!-- Now we just need  a button that triggers the send email-->
   <button mat-raised-button (click)="EditNameAndEmail.sendEmailLink()">Verify that it's you</button>
-  <!-- <app-edit-account-data></app-edit-account-data> -->
 </ng-container>
 <ng-container *ngIf="this.EditProfStepperService.secondChoice === 'Change your Name'">
   <app-edit-account-name></app-edit-account-name>
+</ng-container>
+<!-- *ngIf="this.EditProfStepperService.secondChoice === 'View Project Interests'" -->
+<ng-container
+  *ngIf="this.EditProfStepperService.secondChoice === 'View Project Interests' || this.EditProfStepperService.secondChoice === 'View Skillsets' ">
+  <app-edit-user-preferences></app-edit-user-preferences>
 </ng-container>

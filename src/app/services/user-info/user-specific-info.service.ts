@@ -9,10 +9,8 @@ import { map, pipe } from 'rxjs';
 export class UserSpecificInfoService {
   constructor(private af: AngularFirestore, private afAuth: AngularFireAuth) {}
 
-  niches!: string;
-  skillsets!: string;
-
-  userInfoArr: string[] = [this.niches, this.skillsets];
+  niches!: string[];
+  skillsets!: string[];
 
   getUserInfo() {
     this.afAuth.authState.subscribe((user) => {

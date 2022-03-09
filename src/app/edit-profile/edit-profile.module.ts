@@ -10,6 +10,7 @@ import { ProfSettingsS2Component } from './comps/prof-settings-s2/prof-settings-
 import { SubOptionTierComponent } from './comps/re-usable/sub-option-tier/sub-option-tier.component';
 import { ProfSettingsS3Component } from './comps/prof-settings-s3/prof-settings-s3.component';
 import { EditAccountNameComponent } from './comps/edit-account-name/edit-account-name.component';
+import { EditUserPreferencesComponent } from './comps/edit-user-preferences/edit-user-preferences.component';
 @NgModule({
   declarations: [
     ProfileSettingsComponent,
@@ -20,6 +21,7 @@ import { EditAccountNameComponent } from './comps/edit-account-name/edit-account
     SubOptionTierComponent,
     ProfSettingsS3Component,
     EditAccountNameComponent,
+    EditUserPreferencesComponent,
   ],
   imports: [CommonModule, EditProfileRoutingModule, SharedModule],
 })

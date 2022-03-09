@@ -1,10 +1,71 @@
 import { Injectable } from '@angular/core';
-
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { map } from 'rxjs';
+import { UserSpecificInfoService } from 'src/app/services/user-info/user-specific-info.service';
+import { ProjectSpecificInfoService } from '../user-info/project-specific-info.service';
 @Injectable({
   providedIn: 'root',
 })
 export class ChipsLoginService {
-  constructor() {}
+  constructor(
+    private ProjectSpecificInfo: ProjectSpecificInfoService,
+    private UserSpecificInfo: UserSpecificInfoService,
+    private afAuth: AngularFireAuth,
+    private af: AngularFirestore
+  ) {}
+  selectedNiches!: string[];
+  selectedSkills!: string[];
+
+  getUserInterests() {
+    this.afAuth.authState.subscribe((user) => {
+      if (user) {
+        const userInterest$ = this.af
+          .doc(`users/${user.uid}`)
+          .valueChanges()
+          .pipe(
+            map((info: any) => {
+              return info.niches;
+            })
+          );
+        userInterest$.subscribe((niches: any) => {
+          this.selectedNiches = niches;
+          for (let i = 0; i < this.nichesArr.length - 1; i++) {
+            for (let I = 0; I < this.nichesArr.length - 1; I++) {
+              if (this.nichesArr[i].name === this.selectedNiches[I]) {
+                this.nichesArr[i].selected = true;
+              }
+            }
+          }
+        });
+      }
+    });
+  }
+
+  getUserSkills() {
+    this.afAuth.authState.subscribe((user) => {
+      if (user) {
+        const userSkill$ = this.af
+          .doc(`users/${user.uid}`)
+          .valueChanges()
+          .pipe(
+            map((info: any) => {
+              return info.skillsets;
+            })
+          );
+        userSkill$.subscribe((skillsets: any) => {
+          this.selectedSkills = skillsets;
+          for (let i = 0; i < this.skillsetsArr.length - 1; i++) {
+            for (let I = 0; I < this.skillsetsArr.length - 1; I++) {
+              if (this.skillsetsArr[i].name === this.selectedSkills[I]) {
+                this.skillsetsArr[i].selected = true;
+              }
+            }
+          }
+        });
+      }
+    });
+  }
 
   nichesArr = [
     { name: 'Lending & Borrowing', selected: false },

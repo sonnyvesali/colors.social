@@ -1,0 +1,11 @@
+<div class="pref-container" *ngIf="this.EditProfStepperService.secondChoice === 'View Project Interests'">
+  <mat-label class="mat-label">Your current interests are selected</mat-label>
+  <mat-chip-list class="mat-chip-list">
+    <app-niche-chips-list></app-niche-chips-list>
+  </mat-chip-list>
+  <button class="submit-btn" [disabled]="chipsService.isInLoginRange() === false" mat-raised-button type="submit"
+    (click)="this.changeUserPrefs.submitInterests()">Submit Changes</button>
+</div>
+<ng-container *ngIf="this.EditProfStepperService.secondChoice === 'View Skillsets'">
+
+</ng-container>

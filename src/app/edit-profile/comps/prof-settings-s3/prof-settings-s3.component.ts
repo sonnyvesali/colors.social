@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatStepper } from '@angular/material/stepper';
+import { ChipsLoginService } from 'src/app/services/login-chips/chips-login.service';
 import { EditNameAndEmailService } from '../../services/edit-name-and-email.service';
 import { EditProfStepperService } from '../../services/edit-prof-stepper.service';
 
@@ -12,8 +13,12 @@ export class ProfSettingsS3Component implements OnInit {
   constructor(
     public stepper: MatStepper,
     public EditProfStepperService: EditProfStepperService,
-    public EditNameAndEmail: EditNameAndEmailService
+    public EditNameAndEmail: EditNameAndEmailService,
+    public chipsService: ChipsLoginService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.chipsService.getUserInterests();
+    this.chipsService.getNicheNumber();
+  }
 }
