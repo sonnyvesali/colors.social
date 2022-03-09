@@ -50,6 +50,7 @@ export class RegisterFormService {
         this.af.collection('users').doc(user.uid).update({
           name: name,
           niches: chosenNiches,
+          userType: 'user',
           skillsets: chosenSkillset,
           profileComplete: true,
         });
