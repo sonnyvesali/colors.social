@@ -1,0 +1,13 @@
+  <div class="tier-wrapper" (click)="this.EditProfStepperService.goForward(stepper, ref)">
+    <div class="tier">
+      <div class="text-contianer">
+        <mat-label class="mat-label" #ref>
+          {{Title}}
+        </mat-label>
+      </div>
+      <span class="filler"></span>
+      <button class="mat-icon-button" mat-icon-button matStepperNext>
+        <img class="forward-icon-img" src="assets/edit-profile-assets/forward-arrow-icon.svg">
+      </button>
+    </div>
+  </div>

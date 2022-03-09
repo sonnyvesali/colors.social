@@ -25,6 +25,7 @@ export class LoginFormService {
 
   async sendEmailLink(email: string) {
     this.email = email;
+
     const actionCodeSettings: ActionCodeSettings = {
       url: 'http://localhost:4200/user/register',
       handleCodeInApp: true,
@@ -48,11 +49,14 @@ export class LoginFormService {
         }
         await this.afAuth.signInWithEmailLink(email as string, url);
         this.afAuth.authState.subscribe((user) => {
-          this.af.collection('users').doc(user?.uid).set({
-            email: this.email,
-            userUID: user?.uid,
-            profileCreated: false,
-          });
+          this.af
+            .collection('users')
+            .doc(user?.uid)
+            .set({
+              email: window.localStorage.getItem('emailForSignIn'),
+              userUID: user?.uid,
+              profileCreated: false,
+            });
         });
         // add back in when in production
         // window.localStorage.removeItem('emailForSignIn');

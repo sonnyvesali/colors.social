@@ -1,7 +1,7 @@
 <form [formGroup]="createProfileForm" class="form-container">
   <div class="back-btn-wrapper">
     <button class="back-btn" mat-icon-button (click)="this.StepperService.goBack(stepper)">
-      <img src="assets/stepper/back-arrow-icon.svg">
+      <img src="assets/edit-profile-assets/blue-back-arrow-icon.svg">
     </button>
   </div>
   <div class="form-field">
@@ -31,16 +31,18 @@
       <div class="textarea-wrapper">
         <textarea matInput formControlName="projectBio" maxlength="150"
           placeholder="Cover essential information about your project" type="text" cdkTextareaAutosize
-          #autosize="cdkTextareaAutosize" [(ngModel)]="value" (ngModelChange)="valueChange(value)"
-          cdkAutosizeMinRows='3' cdkAutosizeMaxRows="15">
+          #autosize="cdkTextareaAutosize" [(ngModel)]="RegisterService.value"
+          (ngModelChange)="RegisterService.valueChange(RegisterService.value)" cdkAutosizeMinRows='3'
+          cdkAutosizeMaxRows="15">
                 </textarea>
       </div>
-      <span class="remaining">{{remainingText}}</span>
+      <span class="remaining">{{RegisterService.remainingText}}</span>
     </mat-form-field>
   </div>
   <div>
     <mat-label>Upload Your Project's Logo Here</mat-label>
-    <input class="mat-input" id="fileUpload" type="file" (change)="upload($event)" accept="*.png.jpg.svg">
+    <input class="mat-input" id="fileUpload" type="file" (change)="RegisterService.upload($event)"
+      accept="*.png.jpg.svg">
   </div>
   <div>
     <mat-label>
@@ -53,8 +55,9 @@
     </mat-chip-list>
   </div>
   <div class="submit-btn-wrapper">
-    <button type="submit" mat-raised-button matStepperNext (click)="onFirstStepSubmit()"
-      [disabled]="chipsService.isInCategoryRange() === true || formIsFilledOut() === false">Next
+    <button type="submit" mat-raised-button matStepperNext
+      (click)="RegisterService.onFirstStepSubmit(name, projectName, projectBio)"
+      [disabled]="chipsService.isInCategoryRange() === true || RegisterService.formIsFilledOut(name, projectName, projectBio) === false">Next
       Step
     </button>
   </div>

@@ -1,0 +1,17 @@
+.mat-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.submit-btn-wrapper {
+    // margin-top: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.mat-label {
+    font-size: larger;
+    margin-top: 10px;
+}

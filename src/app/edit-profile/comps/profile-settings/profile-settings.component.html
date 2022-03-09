@@ -1,0 +1,28 @@
+<mat-card class="edit-container">
+  <h1 *ngIf="this.EditProfStepperService.currentIndex === 0" class="h1">Profile Settings</h1>
+  <div class="back-btn-wrapper" *ngIf="this.EditProfStepperService.currentIndex > 0">
+    <button mat-icon-button (click)="this.EditProfStepperService.goBack(stepper)">
+      <img class="back-btn" src="assets/edit-profile-assets/blue-back-arrow-icon.svg">
+    </button>
+    <mat-label *ngIf="this.EditProfStepperService.currentIndex === 1" class="mat-label">
+      {{this.EditProfStepperService.firstChoice}}</mat-label>
+    <mat-label *ngIf="this.EditProfStepperService.currentIndex === 2" class="mat-label">
+      {{this.EditProfStepperService.secondChoice}}</mat-label>
+  </div>
+  <mat-stepper #stepper hide-header class="mat-stepper-container">
+    <mat-step>
+      <app-prof-settings-s1></app-prof-settings-s1>
+    </mat-step>
+    <mat-step>
+      <app-prof-settings-s2></app-prof-settings-s2>
+    </mat-step>
+    <mat-step>
+      <app-prof-settings-s3></app-prof-settings-s3>
+    </mat-step>
+  </mat-stepper>
+</mat-card>
+<!-- 
+    Ok so now that we got a working prototype going let's format with css
+    
+
+-->

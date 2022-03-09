@@ -30,17 +30,17 @@ export class NewUserGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return this.userInfoService.userDoc$.pipe(
-      take(1),
-      map((user: any) => user.profileCreated),
-      tap((profBool) => {
-        if (profBool === false) {
-          console.log(profBool, 'inner');
-          this.router.navigate(['/user', 'login']);
-        }
-      })
-    );
+    // return this.userInfoService.userDoc$.pipe(
+    //   take(1),
+    //   map((user: any) => user.profileCreated),
+    //   tap((profBool) => {
+    //     if (profBool === false) {
+    //       console.log(profBool, 'inner');
+    //       this.router.navigate(['/user', 'login']);
+    //     }
+    //   })
+    // );
 
-    // return true;
+    return true;
   }
 }

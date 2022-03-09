@@ -1,0 +1,15 @@
+<div class="tier" (click)="this.EditProfStepperService.goForward(stepper, ref)">
+  <img *ngIf="Icon !== undefined" class="icon-img" [src]="'assets/edit-profile-assets/' +  Icon +  '.svg'">
+  <div>
+    <mat-label class="mat-label" #ref>
+      {{Title}}
+    </mat-label>
+    <mat-card-subtitle class="mat-subtitle">
+      {{subtitle}}
+    </mat-card-subtitle>
+  </div>
+  <span class="filler"></span>
+  <button class="mat-icon-button" mat-icon-button matStepperNext>
+    <img class="forward-icon-img" src="assets/edit-profile-assets/forward-arrow-icon.svg">
+  </button>
+</div>

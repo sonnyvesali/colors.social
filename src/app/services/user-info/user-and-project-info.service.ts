@@ -24,7 +24,7 @@ export class UserAndProjectInfoService {
   getNameAndEmail() {
     this.afAuth.authState.subscribe((user) => {
       if (user) {
-        const nameAndEmailObservable = this.af
+        const nameAndEmail$ = this.af
           .collection('users')
           .doc(user.uid)
           .valueChanges()
@@ -33,7 +33,7 @@ export class UserAndProjectInfoService {
               return [info.email, info.name];
             })
           );
-        return nameAndEmailObservable.subscribe((info: any) => {
+        return nameAndEmail$.subscribe((info: any) => {
           [this.email, this.name] = info;
           console.log(info, 'service');
           return info;
@@ -47,7 +47,7 @@ export class UserAndProjectInfoService {
   getProfileInfo() {
     this.afAuth.authState.subscribe((user) => {
       if (user) {
-        const profileObservable = this.af
+        const profile$ = this.af
           .collection('users')
           .doc(user.uid)
           .valueChanges()
@@ -57,7 +57,7 @@ export class UserAndProjectInfoService {
             })
           );
 
-        return profileObservable.subscribe((info: any) => {
+        return profile$.subscribe((info: any) => {
           [this.profileCompleted, this.profileCreated] = info;
           console.log(this.profileInfoArr, 'service');
           return info;
@@ -71,7 +71,7 @@ export class UserAndProjectInfoService {
   getUserInfo() {
     this.afAuth.authState.subscribe((user) => {
       if (user) {
-        const userInfoObservable = this.af
+        const userInfo$ = this.af
           .collection('users')
           .doc(user.uid)
           .valueChanges()
@@ -81,7 +81,7 @@ export class UserAndProjectInfoService {
             })
           );
 
-        return userInfoObservable.subscribe((doc) => {
+        return userInfo$.subscribe((doc) => {
           [this.userType, this.userUID] = doc;
           console.log(doc, 'service');
           return doc;

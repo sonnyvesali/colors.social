@@ -76,6 +76,10 @@ $colors-ang-v1-theme: mat.define-dark-theme((
 //     display: none !important;
 // }
 
+mat-stepper[hide-header] .mat-horizontal-stepper-header-container {
+  display:none;
+}
+
 
 
 // Include theme styles for core and each component used in your app.
@@ -117,6 +121,7 @@ input[type="file"]::file-selector-button {
     transform: translate3d(0, 0, 0);
     transition: background 400ms cubic-bezier(0.25, 0.8, 0.25, 1),box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 
 
 /*  fallback for older browsers supporting the -webkit prefix */

@@ -8,6 +8,7 @@ import { take } from 'rxjs';
 import { StepperService } from 'src/app/user/services/stepper.service';
 import { ChipsLoginService } from 'src/app/services/login-chips/chips-login.service';
 import { MatStepper } from '@angular/material/stepper';
+import { RegisterFormService } from 'src/app/user/services/register-form.service';
 
 @Component({
   selector: 'app-create-project-form1',
@@ -18,25 +19,14 @@ export class CreateProjectForm1Component implements OnInit {
   constructor(
     public chipsService: ChipsLoginService,
     private _ngZone: NgZone,
+    public RegisterService: RegisterFormService,
     private fb: FormBuilder,
     public afStorage: AngularFireStorage,
-    private af: AngularFirestore,
-    private afAuth: AngularFireAuth,
     public StepperService: StepperService,
     public stepper: MatStepper
   ) {}
-  //2 forms
 
   createProfileForm!: FormGroup;
-
-  TestForm!: FormGroup;
-  fileToUpload: File | null = null;
-  path!: any;
-  remainingText!: number;
-  value: string = '';
-  imgUploaded!: boolean;
-  loading: boolean = false;
-  selectedChips: string[] = [];
 
   ngOnInit(): void {
     this.createProfileForm = this.fb.group({
@@ -44,6 +34,18 @@ export class CreateProjectForm1Component implements OnInit {
       projectName: ['', [Validators.required]],
       projectBio: ['', [Validators.required]],
     });
+  }
+
+  get name() {
+    return this.createProfileForm.get('name')?.value;
+  }
+
+  get projectName() {
+    return this.createProfileForm.get('projectName')?.value;
+  }
+
+  get projectBio() {
+    return this.createProfileForm.get('projectBio')?.value;
   }
 
   @ViewChild('autosize')
@@ -54,69 +56,4 @@ export class CreateProjectForm1Component implements OnInit {
       this.autosize.resizeToFitContent(true);
     });
   }
-
-  upload($event: any) {
-    if ($event.arget.files[0].size < 2000000) {
-      this.path = $event.target.files[0];
-    }
-  }
-
-  async uploadImage() {
-    const user = await this.afAuth.currentUser;
-    const userUID = user?.uid;
-
-    this.afStorage.upload(
-      `/project-avatars/${userUID}/project-avatar`,
-      this.path
-    );
-  }
-
-  valueChange(value: string) {
-    this.remainingText = 150 - value.length;
-  }
-  formIsFilledOut() {
-    const name = this.createProfileForm.get('name')?.value;
-    const projectName = this.createProfileForm.get('projectName')?.value;
-    const bio = this.createProfileForm.get('projectBio')?.value;
-    const selectedNiches = this.chipsService.getSelectedNiches();
-    console.log(typeof name, typeof bio, selectedNiches);
-    if (
-      name === '' ||
-      bio === '' ||
-      selectedNiches === [] ||
-      projectName === ''
-    ) {
-      console.log(false);
-      return false;
-    } else {
-      console.log(true);
-      return true;
-    }
-  }
-  async onFirstStepSubmit() {
-    const name = this.createProfileForm.get('name')?.value;
-    const projectName = this.createProfileForm.get('projectName')?.value;
-    console.log(name);
-    const bio = this.createProfileForm.get('projectBio')?.value;
-    console.log(bio);
-    const selectedNiches = this.chipsService.getSelectedNiches();
-    console.log(selectedNiches);
-    const user = await this.afAuth.currentUser;
-    const userUID = user?.uid;
-    await this.uploadImage();
-    await this.af.collection('users').doc(userUID).update({
-      name: name,
-      projectName: projectName,
-      projectBio: bio,
-      selectedNiches: selectedNiches,
-    });
-  }
-
-  getSelectedChips() {
-    this.selectedChips = this.chipsService.getSelectedSkills();
-    console.log(this.selectedChips);
-  }
 }
-// I think I figured it out, so we can proceed
-// push all the shit here but instantiation
-// happens here

@@ -1,0 +1,31 @@
+.tier-wrapper {
+
+    // background-color: yellowgreen;
+    // color: black;
+    width: clamp(400px, 40vw, 700px);
+    // display: flex;
+    // justify-content: space-between;
+    // align-items: center;
+}
+
+.tier {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 1s, color 1s;
+}
+
+.tier:hover {
+    background-color: #5f5e5e;
+    color: #3cb9d9;
+    cursor: pointer;
+}
+
+.tier:nth-child(2) {
+    justify-self: flex-end;
+}
+
+.forward-icon-img {
+    height: 25px;
+}

@@ -1,0 +1,23 @@
+<mat-card class="mat-container">
+  <div class="email-container">
+    <div class="text-container">
+      <mat-label class="mat-label">
+        Current Email: {{oldEmail}}
+      </mat-label>
+    </div>
+    <form class="form" [formGroup]="ChangeEmailForm">
+      <mat-form-field>
+        <input matInput formControlName="newEmail">
+        <mat-error *ngIf="email?.invalid">Enter a Valid Email</mat-error>
+      </mat-form-field>
+      <button class="submit-btn" type="submit" [disabled]="email?.invalid || email?.value === oldEmail ? true : false"
+        mat-raised-button (click)="EditNameAndEmail.changeEmail(email)">
+        Submit
+      </button>
+    </form>
+  </div>
+  <button mat-flat-button *ngIf="EditNameAndEmail.emailSent === true" routerLink="/">Go Home</button>
+</mat-card>
+<ng-container>
+
+</ng-container>

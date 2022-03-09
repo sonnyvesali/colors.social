@@ -1,7 +1,7 @@
       <div class="form-container">
         <div class="back-btn-wrapper">
           <button class="back-btn" mat-icon-button (click)="this.StepperService.goBack(stepper)">
-            <img src="assets/stepper/back-arrow-icon.svg">
+            <img src="assets/edit-profile-assets/blue-back-arrow-icon.svg">
           </button>
         </div>
         <mat-label class="mat-label">
@@ -21,8 +21,9 @@
               type="url">
           </mat-form-field>
           <div class="submit-btn-wrapper">
-            <button routerLink="/" mat-raised-button type="submit" [disabled]="secondFormIsDone()"
-              (click)="onSecondSubmit()">
+            <button routerLink="/" mat-raised-button type="submit"
+              [disabled]="RegisterService.secondFormIsDone(discordLink) === true"
+              (click)="RegisterService.onSecondSubmit(discordLink)">
               Complete Profile
             </button>
           </div>

@@ -1,6 +1,6 @@
 <mat-card class="mat-card-container">
   <button class="back-btn" mat-icon-button (click)="this.StepperService.goBack(stepper)">
-    <img src="assets/stepper/back-arrow-icon.svg">
+    <img src="assets/edit-profile-assets/blue-back-arrow-icon.svg">
   </button>
   <form class="form-container" [formGroup]="CreateUser" #profileFrom="">
     <div class="form-field">
@@ -27,8 +27,9 @@
     <!-- </mat-form-field> -->
     <div class="submit-btn-wrapper">
       <button type="button"
-        [disabled]="(chipsService.isInLoginRange() === false || nameIsFilledOut() === false)? true: false"
-        (click)="onSubmit()" routerLink="/" mat-raised-button type="submit" class="submit-btn">Create Profile</button>
+        [disabled]="(chipsService.isInLoginRange() === false || RegisterService.nameIsFilledOut(name) === false)? true: false"
+        (click)="RegisterService.onUserSubmit(name)" routerLink="/" mat-raised-button type="submit"
+        class="submit-btn">Create Profile</button>
     </div>
   </form>
 </mat-card>

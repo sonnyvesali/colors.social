@@ -20,8 +20,8 @@
       <mat-error *ngIf="email?.invalid && email?.dirty">You must enter a valid email address</mat-error>
     </mat-form-field>
     <mat-error class="server-error">{{this.LoginFormService.serverMessage}}</mat-error>
-    <button type="button" class="submit" routerLink="/user/register" mat-stroked-button [disabled]='loading'
-      (click)="onSubmit()">
+    <button type="button" class="submit" routerLink="/user/register" mat-stroked-button
+      [disabled]='email?. invalid ? true: false' (click)="onSubmit()">
       <ng-container *ngIf="isSignUp">
         Register
       </ng-container>

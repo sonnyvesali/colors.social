@@ -1,0 +1,15 @@
+<!-- <mat-card class="mat-card"> -->
+<div class="mat-container">
+  <mat-label class="mat-label">
+    Current Name: {{this.userAndProjectInfo.name}}
+  </mat-label>
+  <form [formGroup]="NameForm">
+    <mat-form-field>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <div class="submit-btn-wrapper">
+      <button mat-raised-button (click)="EditNameAndEmail.changeName(name)">Submit</button>
+    </div>
+  </form>
+</div>
+<!-- </mat-card> -->

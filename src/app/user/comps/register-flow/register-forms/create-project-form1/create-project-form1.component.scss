@@ -15,7 +15,11 @@
         width: 20px;
     }
 }
-
+.remaining {
+    float: right;
+    // align-self: flex-end;
+    // justify-self: flex-end;
+}
 
 .form-field {
     width:100%;
