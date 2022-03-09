@@ -141,14 +141,25 @@ export class ChipsLoginService {
     return numOfSelected;
   }
 
-  isInCategoryRange() {
+  isInNicheRange() {
     const nicheNum = this.getNicheNumber();
-    if (nicheNum <= 2 && nicheNum >= 1) {
+    if (nicheNum <= 3 && nicheNum >= 1) {
       return false;
     } else {
       return true;
     }
   }
+
+  isInSkillRange() {
+    const skillNum = this.getSkillSetNumber();
+    if (skillNum <= 2 && skillNum >= 1) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  // isInNicheRange() {}
 
   chosenNiches: string[] = [];
   chosenSkills: string[] = [];

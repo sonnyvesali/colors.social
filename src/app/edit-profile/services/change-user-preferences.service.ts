@@ -7,6 +7,7 @@ import { SnackService } from 'src/app/services/snackbar/snack.service';
   providedIn: 'root',
 })
 export class ChangeUserPreferencesService {
+  submittedOnce = false;
   constructor(
     private chipsLogin: ChipsLoginService,
     private af: AngularFirestore,
@@ -22,6 +23,7 @@ export class ChangeUserPreferencesService {
           niches: chosenInterests,
         });
         this.snackService.CreateSnackNotification('Changes Submitted', '');
+        this.submittedOnce = true;
       }
     });
   }
@@ -34,6 +36,7 @@ export class ChangeUserPreferencesService {
           niches: chosenSkills,
         });
         this.snackService.CreateSnackNotification('Changes Submitted', '');
+        this.submittedOnce = true;
       }
     });
   }
