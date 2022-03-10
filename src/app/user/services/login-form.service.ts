@@ -27,7 +27,7 @@ export class LoginFormService {
     this.email = email;
 
     const actionCodeSettings: ActionCodeSettings = {
-      url: 'http://localhost:4200/user/register',
+      url: 'http://localhost:4200/user/new-user',
       handleCodeInApp: true,
     };
     try {
@@ -47,19 +47,31 @@ export class LoginFormService {
         if (!email) {
           email = window.prompt('Please provide your email for confirmation');
         }
-        await this.afAuth.signInWithEmailLink(email as string, url);
-        this.afAuth.authState.subscribe((user) => {
-          this.af
-            .collection('users')
-            .doc(user?.uid)
-            .set({
-              email: window.localStorage.getItem('emailForSignIn'),
-              userUID: user?.uid,
-              profileCreated: false,
-            });
+        await this.afAuth.signInWithEmailLink(email as string, url).then(() => {
+          this.afAuth.authState.subscribe((user) => {
+            if (user) {
+              this.af
+                .doc(`users/${user.uid}`)
+                .ref.get()
+                .then((docsnap) => {
+                  if (!docsnap.exists) {
+                    this.af
+                      .doc(`users/${user.uid}`)
+                      .set({
+                        userUID: user.uid,
+                        profileCreated: false,
+                        email: user.email,
+                      })
+                      .then(() => {
+                        window.localStorage.removeItem('emailForSignIn');
+                      });
+                  } else {
+                    window.localStorage.removeItem('emailForSignIn');
+                  }
+                });
+            }
+          });
         });
-        // add back in when in production
-        // window.localStorage.removeItem('emailForSignIn');
       }
     } catch (err) {
       this.serverMessage = err;

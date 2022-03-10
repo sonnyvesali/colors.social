@@ -9,6 +9,7 @@ import { RegisterFlowComponent } from './comps/register-flow/register-flow.compo
 import { CreateProjectForm1Component } from './comps/register-flow/register-forms/create-project-form1/create-project-form1.component';
 import { CreateProjectForm2Component } from './comps/register-flow/register-forms/create-project-form2/create-project-form2.component';
 import { CreateUserFormsComponent } from './comps/register-flow/register-forms/create-user-forms/create-user-forms.component';
+import { LoginRedirectComponent } from './comps/login-redirect/login-redirect.component';
 @NgModule({
   declarations: [
     LoginPageComponent,
@@ -18,6 +19,7 @@ import { CreateUserFormsComponent } from './comps/register-flow/register-forms/c
     CreateProjectForm1Component,
     CreateProjectForm2Component,
     CreateUserFormsComponent,
+    LoginRedirectComponent,
   ],
   imports: [CommonModule, SharedModule, UserRoutingModule],
 })

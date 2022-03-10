@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
@@ -8,21 +6,22 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { first, map, Observable, of, pipe, switchMap, take, tap } from 'rxjs';
+import { Observable, map, take, tap } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { UserAndProjectInfoService } from '../services/user-info/user-and-project-info.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class NewUserGuard implements CanActivate {
+export class LoginRedirectGuard implements CanActivate {
   constructor(
     private afAuth: AngularFireAuth,
     private af: AngularFirestore,
     private userInfoService: UserAndProjectInfoService,
     private router: Router
   ) {}
-  //let's take it one piece of code at a time, when we know the re-direct works
-  // we'll then figure out how to guard this router
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -36,12 +35,11 @@ export class NewUserGuard implements CanActivate {
       map((user: any) => user.profileCreated),
       tap((profBool) => {
         if (profBool === false) {
-          console.log(profBool, 'inner');
-          this.router.navigate(['/user', 'login']);
+          this.router.navigate(['/user', 'register']);
+        } else {
+          this.router.navigate(['/']);
         }
       })
     );
-
-    return true;
   }
 }
