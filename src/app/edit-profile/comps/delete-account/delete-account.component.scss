@@ -1,0 +1,23 @@
+.mat-card-container {
+    width: clamp(500px, 30vw, 700px);
+    margin: 30px auto;
+}
+
+.mat-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+}
+
+.input {
+    text-align: center;
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+.form {
+    display: flex;
+}

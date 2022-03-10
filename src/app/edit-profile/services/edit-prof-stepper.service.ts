@@ -17,16 +17,18 @@ export class EditProfStepperService {
 
   goForward(stepper: MatStepper, element: HTMLElement) {
     stepper.next();
-    console.log(stepper.selectedIndex);
+    // console.log(stepper.selectedIndex);
     this.currentIndex = stepper.selectedIndex;
     const chosenRef = element.textContent;
-    console.log(chosenRef);
-    if (chosenRef?.includes('Account')) {
+    console.log(chosenRef, 'chosen ref');
+    if (chosenRef === 'Account Information') {
       this.firstChoice = 'Account Information';
     } else if (chosenRef?.includes('Profile Preferences')) {
       this.firstChoice = 'Profile Preferences';
-    } else if (chosenRef?.includes('Deactive your Account')) {
-      this.firstChoice = 'Deactivate your Account';
+    } else if (chosenRef?.includes('Edit Project Profile')) {
+      this.firstChoice = 'Edit Project Profile';
+    } else if (chosenRef?.includes('Deactivate Your Account')) {
+      this.firstChoice = 'Deactivate Your Account';
     } else if (chosenRef?.includes('Change your Email')) {
       this.secondChoice = 'Change your Email';
     } else if (chosenRef?.includes('Change your Name')) {

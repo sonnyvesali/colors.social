@@ -57,7 +57,7 @@
   <div class="submit-btn-wrapper">
     <button type="submit" mat-raised-button matStepperNext
       (click)="RegisterService.onFirstStepSubmit(name, projectName, projectBio)"
-      [disabled]="chipsService.isInNicheRange() === true || RegisterService.formIsFilledOut(name, projectName, projectBio) === false">Next
+      [disabled]="chipsService.isInNicheRange() === true || RegisterService.formIsFilledOut(name, projectName, projectBio) === false || RegisterService.path === undefined">Next
       Step
     </button>
   </div>

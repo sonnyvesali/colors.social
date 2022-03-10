@@ -1,0 +1,20 @@
+<div class="mat-card-container">
+  <mat-card class="mat-container">
+    <div class="delete-container">
+      <div class="text-container">
+        <mat-label>
+          Type your Current Email to Confirm: {{Email}}
+        </mat-label>
+      </div>
+      <form class="form" [formGroup]="deleteAccountForm">
+        <mat-form-field class="mat-form-field">
+          <input class="input" matInput formControlName="confirmEmail">
+        </mat-form-field>
+      </form>
+    </div>
+    <button routerLink="/" mat-raised-button [disabled]="email?.value === Email ? false : true"
+      (click)="DeleteAccount.deleteAccount()">
+      Delete my Account
+    </button>
+  </mat-card>
+</div>

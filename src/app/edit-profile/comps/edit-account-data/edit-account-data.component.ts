@@ -45,14 +45,4 @@ export class EditAccountDataComponent implements OnInit {
   get email() {
     return this.ChangeEmailForm.get('newEmail');
   }
-
-  // onNameChangeSubmit() {
-  //   this.afAuth.authState.subscribe((user) => {
-  //     try {
-  //       this.af.doc(`users/${user?.uid}`).update({ name: this.name?.value });
-  //     } catch (err) {
-  //       this.snack.CreateSnackNotification(`${err}`, '');
-  //     }
-  //   });
-  // }
 }

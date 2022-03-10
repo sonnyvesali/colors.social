@@ -8,7 +8,6 @@ import {
   redirectLoggedInTo,
 } from '@angular/fire/compat/auth-guard';
 import { LoginRedirectComponent } from './comps/login-redirect/login-redirect.component';
-import { LoginRedirectGuard } from './login-redirect.guard';
 const routes: Routes = [
   // if the user is logged in redirect to home
   {
@@ -25,7 +24,6 @@ const routes: Routes = [
   {
     path: 'new-user',
     component: LoginRedirectComponent,
-    canActivate: [LoginRedirectGuard],
   },
 ];
 

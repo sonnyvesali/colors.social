@@ -1,6 +1,12 @@
   <app-option-tier Title="Account Information" subtitle="Access your account information like your email here"
     Icon="blue-user"></app-option-tier>
-  <app-option-tier Title="Profile Preferences" subtitle="Access and change your preferences here"
-    Icon="blue-preferences"></app-option-tier>
+  <ng-container *ngIf="this.UserandProjectInfo.userType === 'user'">
+    <app-option-tier Title="Profile Preferences" subtitle="Access and change your preferences here"
+      Icon="blue-preferences"></app-option-tier>
+  </ng-container>
+  <ng-container *ngIf="this.UserandProjectInfo.userType === 'project'">
+    <app-option-tier Title="Edit Project Profile" subtitle="See and change all things related to your Project"
+      Icon="blue-pencil"></app-option-tier>
+  </ng-container>
   <app-option-tier Title="Deactivate Your Account" subtitle="Find out the steps to deactivate your account"
     Icon="blue-power-btn"></app-option-tier>
