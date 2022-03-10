@@ -1,8 +1,7 @@
 <div class="login-container">
   <div *ngIf="!(afAuth.authState | async)" class="login-page">
     <h1 class="h1">Login</h1>
-    <button mat-raised-button appGoogleSignIn
-      [routerLink]="this.userAndProjectInfo.profileCompleted === true ? '' :  '/user/register'">
+    <button mat-raised-button appGoogleSignIn>
       <img src="./assets/misc-assets/google-logo.svg">Login With Google
     </button>
     <h5 class="h5">OR</h5>

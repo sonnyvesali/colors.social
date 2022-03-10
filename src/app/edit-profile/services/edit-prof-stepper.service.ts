@@ -21,7 +21,7 @@ export class EditProfStepperService {
     this.currentIndex = stepper.selectedIndex;
     const chosenRef = element.textContent;
     console.log(chosenRef, 'chosen ref');
-    if (chosenRef === 'Account Information') {
+    if (chosenRef?.includes('Account Information')) {
       this.firstChoice = 'Account Information';
     } else if (chosenRef?.includes('Profile Preferences')) {
       this.firstChoice = 'Profile Preferences';
