@@ -63,7 +63,7 @@ export class LoginFormService {
                         email: user.email,
                       })
                       .then(() => {
-                        this.router.navigate(['/users', 'register']);
+                        this.router.navigate(['/user', 'register']);
                         // window.localStorage.removeItem('emailForSignIn');
                       });
                   } else {

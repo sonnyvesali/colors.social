@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ErrorComponent } from '../error/error.component';
 import { CommonModule } from '@angular/common';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
@@ -27,6 +28,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const components = [
   ShellComponent,
+  ErrorComponent,
   NicheChipsListComponent,
   SkillsChipsListComponent,
 ];

@@ -28,10 +28,12 @@ export class DeleteProfileService {
     };
     try {
       this.emailSent = true;
-      this.afAuth.sendSignInLinkToEmail(
-        user?.email as string,
-        actionCodeSettings
-      );
+      this.afAuth
+        .sendSignInLinkToEmail(user?.email as string, actionCodeSettings)
+        .then(() => {
+          this.af.doc(`users/${user?.uid}`).update({ wantsToDelete: true });
+        });
+
       window.localStorage.setItem('emailForSignIn', user?.email as string);
       this.snack.CreateSnackNotification('Check your email', '');
     } catch (err) {

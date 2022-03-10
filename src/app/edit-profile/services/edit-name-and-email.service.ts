@@ -28,10 +28,17 @@ export class EditNameAndEmailService {
     };
     try {
       this.emailSent = true;
-      this.afAuth.sendSignInLinkToEmail(
-        user?.email as string,
-        actionCodeSettings
-      );
+      this.afAuth
+        .sendSignInLinkToEmail(user?.email as string, actionCodeSettings)
+        .then(() => {
+          this.afAuth.authState.subscribe((user) => {
+            if (user) {
+              this.af.doc(`users/${user.uid}`).update({
+                wantsToChangeEmail: true,
+              });
+            }
+          });
+        });
       window.localStorage.setItem('emailForSignIn', user?.email as string);
       this.snack.CreateSnackNotification('Check your Email :)', '');
     } catch (err) {
@@ -42,7 +49,9 @@ export class EditNameAndEmailService {
   changeEmail(email: any) {
     this.afAuth.authState.subscribe((user) => {
       user?.verifyBeforeUpdateEmail(email?.value).then(() => {
-        this.af.doc(`users/${user.uid}`).update({ email: email?.value });
+        this.af
+          .doc(`users/${user.uid}`)
+          .update({ email: email?.value, wantsToChangeEmail: false });
       });
     });
   }

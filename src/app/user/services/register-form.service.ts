@@ -53,6 +53,7 @@ export class RegisterFormService {
           userType: 'user',
           skillsets: chosenSkillset,
           profileComplete: true,
+          profileCreated: true,
         });
         this.SnackService.CreateSnackNotification('Profile Created!', '');
       }

@@ -12,13 +12,11 @@ import { UserAndProjectInfoService } from '../services/user-info/user-and-projec
 @Injectable({
   providedIn: 'root',
 })
-export class NewUserGuard implements CanActivate {
+export class ChangeEmailGuard implements CanActivate {
   constructor(
     private userInfoService: UserAndProjectInfoService,
     private router: Router
   ) {}
-  //let's take it one piece of code at a time, when we know the re-direct works
-  // we'll then figure out how to guard this router
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -27,16 +25,14 @@ export class NewUserGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    // return this.userInfoService.userDoc$.pipe(
-    //   take(1),
-    //   map((user: any) => user.profileCreated),
-    //   tap((profBool) => {
-    //     if (profBool === true) {
-    //       console.log(profBool, 'inner');
-    //       this.router.navigate(['/user', 'login']);
-    //     }
-    //   })
-    // );
-    return true;
+    return this.userInfoService.userDoc$.pipe(
+      take(1),
+      map((user: any) => user.wantsToChangeEmail),
+      tap((emailBool) => {
+        if (emailBool === false) {
+          this.router.navigate(['/edit-profile']);
+        }
+      })
+    );
   }
 }
