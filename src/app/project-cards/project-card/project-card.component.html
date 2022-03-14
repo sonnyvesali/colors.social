@@ -1,0 +1,21 @@
+<div class="mat-card-container" *ngFor="let project of ProjectCardService.project$ | async; let i = index">
+  <div #card (mouseenter)="ProjectCardService.HoverIn(card)" (mouseleave)="ProjectCardService.HoverOut()"
+    [id]='"card_"+i'>
+    <mat-card class="the-mat-card">
+      <div class="main-img">
+        <img
+          [src]="ProjectCardService.PicObj[card.id].selected === false ? project.pictures.pic_1 : ProjectCardService.imagePath"
+          height="350px" style="border-radius: 5%">
+      </div>
+      <div class="small-img-strip">
+        <img (mouseenter)="ProjectCardService.changeTheImg(card, img0)"
+          (mouseleave)="ProjectCardService.defaultPath(card)" #img0 id="0" [src]="project.pictures.pic_1" height="80px">
+        <img (mouseenter)="ProjectCardService.changeTheImg(card, img1)"
+          (mouseleave)="ProjectCardService.defaultPath(card)" #img1 id="1" [src]="project.pictures.pic_2" height="80px">
+        <img (mouseenter)="ProjectCardService.changeTheImg(card, img2)"
+          (mouseleave)="ProjectCardService.defaultPath(card)" #img2 id="2" [src]="project.pictures.pic_3" height="80px">
+      </div>
+      <mat-card-title>{{project.project_name}}</mat-card-title>
+    </mat-card>
+  </div>
+</div>

@@ -32,10 +32,9 @@ export class ProfSettingsS1Component implements OnInit {
   }
 
   /* 
-  Where do we start?
-
-  this.EditProfStepperService.
-
-  Let's start with implementing the markup &&  inject 
+      Ok the problem here is that you're making the same
+      call to the back end what you need to do is make
+      the call conditional on what the user type is:
+      we can do that later for now lets focus on design
   */
 }

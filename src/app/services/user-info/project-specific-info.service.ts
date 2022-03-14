@@ -1,8 +1,26 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { map, pipe } from 'rxjs';
+import { map, pipe, switchMap } from 'rxjs';
+import { collection, where, query } from 'firebase/firestore';
+import { Subject } from 'rxjs';
 
+export interface ProjectDoc {
+  discord?: string;
+  first_answer?: string;
+  niches?: string[];
+  onboarding_process?: Object;
+  open_roles?: string[];
+  pictures?: Object;
+  project_name?: string;
+  readyToList?: boolean;
+  second_answer?: string;
+  third_answer?: string;
+  twitter?: string;
+  youtube?: string;
+  tiktok?: string;
+  instagram?: string;
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -15,51 +33,11 @@ export class ProjectSpecificInfoService {
   projectName!: string;
   projectBio!: string;
   projectNiches!: string;
+  projectDocs: any[] = [];
 
-  projectInfoArr: string[] = [
-    this.discordLink,
-    this.listedContributors,
-    this.profileReadyToList,
-    this.projectBio,
-    this.projectName,
-    this.projectNiches,
-  ];
-
-  getProjectInfo() {
-    this.afAuth.authState.subscribe((user) => {
-      if (user) {
-        const projectInfoObservable = this.af
-          .collection('users')
-          .doc(user.uid)
-          .valueChanges()
-          .pipe(
-            map((info: any) => {
-              return [
-                info.discordLink,
-                info.listedContributors,
-                info.profileReadyToList,
-                info.projectBio,
-                info.projectName,
-                info.selectedNiches,
-              ];
-            })
-          );
-
-        return projectInfoObservable.subscribe((info: any) => {
-          [
-            this.discordLink,
-            this.listedContributors,
-            this.profileReadyToList,
-            this.projectBio,
-            this.projectName,
-            this.projectNiches,
-          ] = info;
-          console.log(info, 'service');
-          return info;
-        });
-      } else {
-        return null;
-      }
-    });
+  getTheDocs() {
+    return this.af
+      .collection('users', (ref) => ref.where('readyToList', '==', 'true'))
+      .valueChanges();
   }
 }

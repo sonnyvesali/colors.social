@@ -25,8 +25,12 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { NicheChipsListComponent } from './niche-chips-list/niche-chips-list.component';
 import { SkillsChipsListComponent } from './skills-chips-list/skills-chips-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FrontFacingNicheChipsComponent } from './front-facing-niche-chips/front-facing-niche-chips.component';
+import { FrontFacingSkillChipsComponent } from './front-facing-skill-chips/front-facing-skill-chips.component';
 
 const components = [
+  FrontFacingNicheChipsComponent,
+  FrontFacingSkillChipsComponent,
   ShellComponent,
   ErrorComponent,
   NicheChipsListComponent,

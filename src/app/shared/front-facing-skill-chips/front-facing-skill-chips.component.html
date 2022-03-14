@@ -1,0 +1,6 @@
+<ng-container>
+  <mat-chip *ngFor="let skill of frontChips.chipsDS" [selected]="skill.selected"
+    (selectionChange)="changeSelected($event, frontChips.chipsDS)" (click)="skill.selected = !skill.selected">
+    {{skill.name}}
+  </mat-chip>
+</ng-container>

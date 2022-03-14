@@ -8,14 +8,40 @@ import { ProjectSpecificInfoService } from '../user-info/project-specific-info.s
   providedIn: 'root',
 })
 export class ChipsLoginService {
+  nichesArr = [
+    { name: 'Lending & Borrowing', selected: false },
+    { name: 'Derivatives', selected: false },
+    { name: 'Experimental DeFi', selected: false },
+    { name: 'JPEG NFTs', selected: false },
+    { name: 'Misc. NFT Projects', selected: false },
+    { name: 'Metaverse NFTs', selected: false },
+    { name: 'Video Game NFTs', selected: false },
+    { name: 'DeSocials', selected: false },
+    { name: 'DeGovernance', selected: false },
+    { name: 'DeVenture', selected: false },
+  ];
+
+  skillsetsArr = [
+    { name: 'Technical Co-Founder', selected: false },
+    { name: 'Non-Technical Co-Founder', selected: false },
+    { name: 'Operations', selected: false },
+    { name: 'Community Manager', selected: false },
+    { name: 'UI/UX Design', selected: false },
+    { name: 'Full-Stack Engineer', selected: false },
+    { name: 'Front-End Engineer', selected: false },
+    { name: 'Smart Contract Engineer', selected: false },
+    { name: 'Social Media Manager', selected: false },
+    { name: 'Marketing', selected: false },
+  ];
+
   constructor(
     private ProjectSpecificInfo: ProjectSpecificInfoService,
     private UserSpecificInfo: UserSpecificInfoService,
     private afAuth: AngularFireAuth,
     private af: AngularFirestore
   ) {}
-  selectedNiches!: string[];
-  selectedSkills!: string[];
+  selectedNiches: string[] = [];
+  selectedSkills: string[] = [];
 
   getUserInterests() {
     this.afAuth.authState.subscribe((user) => {
@@ -25,6 +51,7 @@ export class ChipsLoginService {
           .valueChanges()
           .pipe(
             map((info: any) => {
+              console.log(info.niches, 'info .niches');
               return info.niches;
             })
           );
@@ -66,32 +93,6 @@ export class ChipsLoginService {
       }
     });
   }
-
-  nichesArr = [
-    { name: 'Lending & Borrowing', selected: false },
-    { name: 'Derivatives', selected: false },
-    { name: 'Experimental DeFi', selected: false },
-    { name: 'JPEG NFTs', selected: false },
-    { name: 'Misc. NFT Projects', selected: false },
-    { name: 'Metaverse NFTs', selected: false },
-    { name: 'Video Game NFTs', selected: false },
-    { name: 'DeSocials', selected: false },
-    { name: 'DeGovernance', selected: false },
-    { name: 'DeVenture', selected: false },
-  ];
-
-  skillsetsArr = [
-    { name: 'Technical Co-Founder', selected: false },
-    { name: 'Non-Technical Co-Founder', selected: false },
-    { name: 'Operations', selected: false },
-    { name: 'Community Manager', selected: false },
-    { name: 'UI/UX Design', selected: false },
-    { name: 'Full-Stack Engineer', selected: false },
-    { name: 'Front-End Engineer', selected: false },
-    { name: 'Smart Contract Engineer', selected: false },
-    { name: 'Social Media Manager', selected: false },
-    { name: 'Marketing', selected: false },
-  ];
 
   selectSingle: boolean = true;
 

@@ -1,0 +1,18 @@
+.mat-card-container {
+    width: clamp(500px, 20vw, 500px);
+    height: clamp(500px, 20vw, 500px);
+    margin: auto;
+    // 361.4 x 487
+}
+
+.mat-chip-list {
+    display: flex;
+    justify-content: center;
+}
+
+.mat-label {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    font-size: larger;
+}

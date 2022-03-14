@@ -16,10 +16,12 @@ import { USE_EMULATOR } from '@angular/fire/compat/storage';
 import { SETTINGS } from '@angular/fire/compat/auth';
 import { USE_EMULATOR as FIRESTORE_EMULATOR } from '@angular/fire/compat/firestore';
 import { USE_EMULATOR as AUTH_EMULATOR } from '@angular/fire/compat/auth';
+import { ProjectCardsModule } from './project-cards/project-cards.module';
 @NgModule({
   declarations: [AppComponent, HomePageComponent],
   imports: [
     BrowserModule,
+    ProjectCardsModule,
     SharedModule,
     AppRoutingModule,
     BrowserAnimationsModule,

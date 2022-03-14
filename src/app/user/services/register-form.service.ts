@@ -62,7 +62,7 @@ export class RegisterFormService {
   //======================== End of First User Form ========================
   //======================== Start of First Project Form ========================
   upload($event: any) {
-    if ($event.arget.files[0].size < 2000000) {
+    if ($event.target.files[0].size < 2000000) {
       this.path = $event.target.files[0];
     }
   }
@@ -114,7 +114,11 @@ export class RegisterFormService {
   //======================== Start of Second Project Form ========================
   secondFormIsDone(discordLink: string) {
     const selectedContributors = this.chipsService.getSkillSetNumber();
-    if (selectedContributors === 0 || discordLink === '') {
+    if (
+      selectedContributors === 0 ||
+      discordLink === '' ||
+      selectedContributors >= 4
+    ) {
       return true;
     } else if (discordLink.includes('https://discord.gg/')) {
       return false;
