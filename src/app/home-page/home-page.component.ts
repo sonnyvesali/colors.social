@@ -8,6 +8,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 export class HomePageComponent implements OnInit {
   constructor() {}
 
+  panelOpenState = true;
   opened: boolean = false;
 
   toggleFilter(ref: MatSidenav) {

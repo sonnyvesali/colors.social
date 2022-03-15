@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { ErrorComponent } from '../error/error.component';
 import { CommonModule } from '@angular/common';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -61,6 +62,7 @@ const modules = [
   MatFormFieldModule,
   MatInputModule,
   MatSnackBarModule,
+  MatExpansionModule,
   RouterModule,
 ];
 

@@ -9,13 +9,17 @@ import { ProjectSpecificInfoService } from '../user-info/project-specific-info.s
 })
 export class ChipsLoginService {
   nichesArr = [
+    { name: 'Web 2.5', selected: false },
+    { name: 'Payment Processing', selected: false },
+    { name: 'DAO 2 DAO', selected: false },
+    { name: 'Consumer Web3', selected: false },
     { name: 'Lending & Borrowing', selected: false },
-    { name: 'Derivatives', selected: false },
+    // { name: 'Derivatives', selected: false },
     { name: 'Experimental DeFi', selected: false },
     { name: 'JPEG NFTs', selected: false },
     { name: 'Misc. NFT Projects', selected: false },
-    { name: 'Metaverse NFTs', selected: false },
-    { name: 'Video Game NFTs', selected: false },
+    // { name: 'Metaverse NFTs', selected: false },
+    // { name: 'Video Game NFTs', selected: false },
     { name: 'DeSocials', selected: false },
     { name: 'DeGovernance', selected: false },
     { name: 'DeVenture', selected: false },
@@ -26,13 +30,17 @@ export class ChipsLoginService {
     { name: 'Non-Technical Co-Founder', selected: false },
     { name: 'Operations', selected: false },
     { name: 'Community Manager', selected: false },
-    { name: 'UI/UX Design', selected: false },
+    { name: 'UI/UX Designer', selected: false },
     { name: 'Full-Stack Engineer', selected: false },
     { name: 'Front-End Engineer', selected: false },
     { name: 'Smart Contract Engineer', selected: false },
     { name: 'Social Media Manager', selected: false },
     { name: 'Marketing', selected: false },
   ];
+
+  // chainsArr = [
+  //   {name: 'EVM Compatible', selected: false}
+  // ]
 
   constructor(
     private ProjectSpecificInfo: ProjectSpecificInfoService,

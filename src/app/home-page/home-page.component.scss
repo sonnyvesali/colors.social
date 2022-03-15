@@ -1,5 +1,5 @@
 mat-sidenav {
-    width: clamp(300px, 30%, 400px);
+    width: clamp(350px, 30%, 400px);
     overflow: hidden;
 }
 
@@ -10,6 +10,22 @@ mat-sidenav {
     justify-content: center;
     align-items: center;
     width: 100%;
+}
+
+mat-expansion-panel-header {
+
+    transition: colors .5s;
+}
+
+mat-expansion-panel-header:hover {
+    transition: color .5s;
+    color: #3cb9d9;
+}
+
+
+
+h1 {
+    margin-top: 15px;
 }
 
 mat-chip-list {

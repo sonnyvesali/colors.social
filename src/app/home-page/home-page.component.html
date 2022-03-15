@@ -3,14 +3,24 @@
     <mat-sidenav [fixedInViewport]="true" #nav mode="over" [(opened)]="opened">
       <div class="side-nav-wrapper">
         <h1>Filter By</h1>
-        <h3>Roles</h3>
-        <mat-chip-list>
-          <app-skills-chips-list></app-skills-chips-list>
-        </mat-chip-list>
-        <h3>Niches</h3>
-        <mat-chip-list>
-          <app-niche-chips-list></app-niche-chips-list>
-        </mat-chip-list>
+        <mat-accordion>
+          <mat-expansion-panel [expanded]="true">
+            <mat-expansion-panel-header>Roles</mat-expansion-panel-header>
+            <!-- <h3>Roles</h3> -->
+            <mat-chip-list>
+              <app-skills-chips-list></app-skills-chips-list>
+            </mat-chip-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+        <mat-accordion>
+          <mat-expansion-panel [expanded]="true">
+            <mat-expansion-panel-header>Niches</mat-expansion-panel-header>
+            <!-- <h3>Niches</h3> -->
+            <mat-chip-list>
+              <app-niche-chips-list></app-niche-chips-list>
+            </mat-chip-list>
+          </mat-expansion-panel>
+        </mat-accordion>
       </div>
     </mat-sidenav>
     <mat-sidenav-content>
