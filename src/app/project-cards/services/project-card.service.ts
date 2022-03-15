@@ -3,13 +3,16 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Observable, of } from 'rxjs';
+import { ChipsLoginService } from 'src/app/services/login-chips/chips-login.service';
 @Injectable({
   providedIn: 'root',
 })
 export class ProjectCardService {
-  constructor(private afs: AngularFireStorage, private af: AngularFirestore) {}
+  constructor(
+    private loginChips: ChipsLoginService,
+    private af: AngularFirestore
+  ) {}
 
   imagePath!: any;
   projectRef!: AngularFirestoreCollection<any>;
@@ -45,6 +48,7 @@ export class ProjectCardService {
       }
     });
     console.log(this.PicObj, 'pic objs');
+    // console.log(this.loginChips.getUserSkills(), 'getuserskills');
   }
   HoverIn(element: any) {
     this.PicObj[element.id].selected = true;

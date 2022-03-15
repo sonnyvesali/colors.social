@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomePageComponent } from './home-page/home-page.component';
 import { ErrorComponent } from './error/error.component';
 // import { ProfileSettingsComponent } from './edit-profile/profile-settings/profile-settings.component';
 // import { AccountDataComponent } from './edit-profiles/account-data/account-data.component';
@@ -8,7 +7,10 @@ import { ErrorComponent } from './error/error.component';
 const routes: Routes = [
   {
     path: '',
-    component: HomePageComponent,
+    loadChildren: () =>
+      import('./the-home-page/the-home-page.module').then(
+        (m) => m.TheHomePageModule
+      ),
   },
   {
     path: 'edit-profile',

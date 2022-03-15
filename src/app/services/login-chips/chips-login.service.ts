@@ -40,14 +40,9 @@ export class ChipsLoginService {
 
   // chainsArr = [
   //   {name: 'EVM Compatible', selected: false}
-  // ]
+  //]
 
-  constructor(
-    private ProjectSpecificInfo: ProjectSpecificInfoService,
-    private UserSpecificInfo: UserSpecificInfoService,
-    private afAuth: AngularFireAuth,
-    private af: AngularFirestore
-  ) {}
+  constructor(private afAuth: AngularFireAuth, private af: AngularFirestore) {}
   selectedNiches: string[] = [];
   selectedSkills: string[] = [];
 
