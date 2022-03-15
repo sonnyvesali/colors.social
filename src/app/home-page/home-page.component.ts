@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { FrontChipsService } from '../services/front-facing-chips/front-chips.service';
-// import { ChipsObj } from '../services/front-facing-chips/front-chips.service';
+import { MatSidenav } from '@angular/material/sidenav';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent implements OnInit {
-  constructor(public frontChips: FrontChipsService) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.frontChips.getSelectedRoles();
+  opened: boolean = false;
+
+  toggleFilter(ref: MatSidenav) {
+    ref.toggle();
+    this.opened = !this.opened;
   }
+
+  ngOnInit(): void {}
 }

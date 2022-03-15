@@ -1,18 +1,43 @@
-.mat-card-container {
-    width: clamp(500px, 20vw, 500px);
-    height: clamp(500px, 20vw, 500px);
-    margin: auto;
-    // 361.4 x 487
-}
-
-.mat-chip-list {
+.mat-card-outer-container {
     display: flex;
+    flex-flow: row wrap;
     justify-content: center;
 }
 
-.mat-label {
+
+.main-img-wrapper {
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+.main-img {
+    
     margin-bottom: 15px;
-    font-size: larger;
+}
+
+.main-img {
+    border-radius: 5%;
+    height: 320px;
+}
+
+.small-imgs-strip {
+    display: flex;
+    // justify-content: center;
+    margin-bottom: 5px;
+}
+
+.small-img{
+    height: 60px;
+    margin-right: 15px;
+    border-radius: 10%;
+}
+
+.project-name-wrapper {
+    display: flex;
+    // justify-content: center;
+}
+
+mat-card {
+    margin: 15px;
 }

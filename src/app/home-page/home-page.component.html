@@ -1,2 +1,31 @@
-<app-project-card></app-project-card>
-<!-- <app-front-facing-skill-chips></app-front-facing-skill-chips> -->
+<div class="side-nav-container" (show)="true">
+  <mat-sidenav-container class="mat-side-nav-container">
+    <mat-sidenav [fixedInViewport]="true" #nav mode="over" [(opened)]="opened">
+      <div class="side-nav-wrapper">
+        <h1>Filter By</h1>
+        <h3>Roles</h3>
+        <mat-chip-list>
+          <app-skills-chips-list></app-skills-chips-list>
+        </mat-chip-list>
+        <h3>Niches</h3>
+        <mat-chip-list>
+          <app-niche-chips-list></app-niche-chips-list>
+        </mat-chip-list>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="filter-btn-wrapper">
+        <mat-chip (click)="toggleFilter(nav)">
+          <img class="filter-img" height="100%" src="assets/home-page-assets/filters.svg">
+          <ng-container *ngIf="opened">
+            Hide filter
+          </ng-container>
+          <ng-container *ngIf="!opened">
+            Show Filter
+          </ng-container>
+        </mat-chip>
+      </div>
+      <app-project-card></app-project-card>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

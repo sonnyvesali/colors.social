@@ -1,0 +1,42 @@
+mat-sidenav {
+    width: clamp(300px, 30%, 400px);
+    overflow: hidden;
+}
+
+.side-nav-wrapper {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+mat-chip-list {
+    text-align: center;
+}
+
+mat-chip {
+    height: 35px;
+    font-size: larger;
+    width: auto;
+}
+mat-chip-avatar {
+    min-height: 40px;
+    min-width: 40px;
+}
+
+.filter-img {
+    height: 35px;
+    width: auto;
+    margin-right: 15px;
+}
+
+
+.filter-btn-wrapper {
+    margin-top: 15px;
+    margin-right: 15px;
+    display: flex;
+    justify-content: flex-end;
+
+}
