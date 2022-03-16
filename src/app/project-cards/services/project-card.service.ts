@@ -41,10 +41,9 @@ export class ProjectCardService {
       for (let i = 0; i < Object.keys(doc).length; i++) {
         this.setObject(this.PicObj, `card_${i}`, [doc[i].pics_arr]);
         this.setObject(this.PicObj, `card_${i}.selected`, false);
-        this.setObject(this.PicObj, `card_${i}.open_roles`, [
-          doc[i].open_roles,
-        ]);
-        this.setObject(this.PicObj, `card_${i}.niches`, [doc[i].niches]);
+        this.setObject(this.PicObj, `card_${i}.selected_filter`, null);
+        this.setObject(this.PicObj, `card_${i}.open_roles`, doc[i].open_roles);
+        this.setObject(this.PicObj, `card_${i}.niches`, doc[i].niches);
       }
     });
     console.log(this.PicObj, 'pic objs');

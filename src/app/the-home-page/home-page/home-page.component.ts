@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { ChipsLoginService } from 'src/app/services/login-chips/chips-login.service';
 import { HomePageService } from '../services/home-page.service';
 
 @Component({
@@ -8,10 +9,14 @@ import { HomePageService } from '../services/home-page.service';
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent implements OnInit {
-  constructor(private HomePageService: HomePageService) {}
+  constructor(
+    public HomePageService: HomePageService,
+    private chipsLogin: ChipsLoginService
+  ) {}
 
   ngOnInit(): void {
-    this.HomePageService.getSelectedNiches();
+    // this.HomePageService.getLongestCardArr();
+    // this.chipsLogin.getFilteredNiche$();
   }
 
   panelOpenState = true;

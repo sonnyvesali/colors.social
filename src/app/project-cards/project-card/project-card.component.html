@@ -8,7 +8,6 @@
             <img class="main-img"
               [src]="ProjectCardService.PicObj[card.id].selected === false ? project.pics_arr[0] : ProjectCardService.imagePath">
           </div>
-
           <div class="small-imgs-strip">
             <img class="small-img" (mouseenter)="ProjectCardService.changeTheImg(card, img0)"
               (mouseleave)="ProjectCardService.defaultPath(card)" #img0 id="0" [src]="project.pics_arr[0]">

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { map } from 'rxjs';
+import { map, from, of } from 'rxjs';
 import { UserSpecificInfoService } from 'src/app/services/user-info/user-specific-info.service';
 import { ProjectSpecificInfoService } from '../user-info/project-specific-info.service';
 @Injectable({
@@ -14,12 +14,9 @@ export class ChipsLoginService {
     { name: 'DAO 2 DAO', selected: false },
     { name: 'Consumer Web3', selected: false },
     { name: 'Lending & Borrowing', selected: false },
-    // { name: 'Derivatives', selected: false },
     { name: 'Experimental DeFi', selected: false },
     { name: 'JPEG NFTs', selected: false },
     { name: 'Misc. NFT Projects', selected: false },
-    // { name: 'Metaverse NFTs', selected: false },
-    // { name: 'Video Game NFTs', selected: false },
     { name: 'DeSocials', selected: false },
     { name: 'DeGovernance', selected: false },
     { name: 'DeVenture', selected: false },
@@ -38,9 +35,14 @@ export class ChipsLoginService {
     { name: 'Marketing', selected: false },
   ];
 
-  // chainsArr = [
-  //   {name: 'EVM Compatible', selected: false}
-  //]
+  clearChips() {
+    for (let i = 0; i < this.nichesArr.length; i++) {
+      this.nichesArr[i].selected = false;
+    }
+    for (let i = 0; i < this.skillsetsArr.length; i++) {
+      this.skillsetsArr[i].selected = false;
+    }
+  }
 
   constructor(private afAuth: AngularFireAuth, private af: AngularFirestore) {}
   selectedNiches: string[] = [];
