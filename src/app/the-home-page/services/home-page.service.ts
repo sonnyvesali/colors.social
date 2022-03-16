@@ -11,12 +11,8 @@ export class HomePageService {
     private projectCard: ProjectCardService
   ) {}
 
-  projectRoleLength = 0;
-  projectNicheLength = 0;
-  nichesArr!: string[];
-  skillsArr!: string[];
   PicsObj = this.projectCard.PicObj;
-  nicheOverlap: any[] = [];
+  // NoProjectsFound: boolean | null = null;
 
   applyFilterFactory(filterParam: string) {
     const chosenParam =
@@ -32,7 +28,7 @@ export class HomePageService {
       this.projectCard.setObject(
         this.PicsObj,
         `card_${i}.selected_filter`,
-        null
+        false
       );
       for (var j in projectParam) {
         for (var k in chosenParam) {
@@ -51,6 +47,7 @@ export class HomePageService {
   applyFilter() {
     this.applyFilterFactory('niches');
     this.applyFilterFactory('open_roles');
+    this.NoProjectsMatchCheck();
     console.log(this.PicsObj);
   }
 
@@ -63,5 +60,15 @@ export class HomePageService {
       );
     }
     this.chipsLogin.clearChips();
+  }
+
+  NoProjectsMatchCheck() {
+    this.projectCard.NoProjectsFound = false;
+    for (let i = 0; i < Object.keys(this.PicsObj).length; i++) {
+      if (this.PicsObj[`card_${i}`]['selected_filter'] === true) {
+        this.projectCard.NoProjectsFound = true;
+      }
+    }
+    return this.projectCard.NoProjectsFound;
   }
 }

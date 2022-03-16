@@ -4,17 +4,15 @@ import {
   AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
 import { Observable, of } from 'rxjs';
-import { ChipsLoginService } from 'src/app/services/login-chips/chips-login.service';
+import { HomePageService } from 'src/app/the-home-page/home-page.service';
 @Injectable({
   providedIn: 'root',
 })
 export class ProjectCardService {
-  constructor(
-    private loginChips: ChipsLoginService,
-    private af: AngularFirestore
-  ) {}
+  constructor(private af: AngularFirestore) {}
 
   imagePath!: any;
+  NoProjectsFound: boolean | null = null;
   projectRef!: AngularFirestoreCollection<any>;
   project$: Observable<any> = of('');
   PicObj: any = {};

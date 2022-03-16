@@ -2,26 +2,39 @@
   <div *ngFor="let project of ProjectCardService.project$ | async; let i = index">
     <div class="mat-card-container" #card (mouseenter)="ProjectCardService.HoverIn(card)"
       (mouseleave)="ProjectCardService.HoverOut()" [id]='"card_"+i'>
-      <mat-card class="the-mat-card">
-        <div>
-          <div class="main-img-wrapper">
-            <img class="main-img"
-              [src]="ProjectCardService.PicObj[card.id].selected === false ? project.pics_arr[0] : ProjectCardService.imagePath">
+      <ng-container
+        *ngIf="ProjectCardService.PicObj[card.id].selected_filter === null || ProjectCardService.PicObj[card.id].selected_filter === true ">
+        <mat-card class="the-mat-card">
+          <div>
+            <div class="main-img-wrapper">
+              <img class="main-img"
+                [src]="ProjectCardService.PicObj[card.id].selected === false ? project.pics_arr[0] : ProjectCardService.imagePath">
+            </div>
+            <div class="small-imgs-strip">
+              <img class="small-img" (mouseenter)="ProjectCardService.changeTheImg(card, img0)"
+                (mouseleave)="ProjectCardService.defaultPath(card)" #img0 id="0" [src]="project.pics_arr[0]">
+              <img class="small-img" (mouseenter)="ProjectCardService.changeTheImg(card, img1)"
+                (mouseleave)="ProjectCardService.defaultPath(card)" #img1 id="1" [src]="project.pics_arr[1]">
+              <img class="small-img" (mouseenter)="ProjectCardService.changeTheImg(card, img2)"
+                (mouseleave)="ProjectCardService.defaultPath(card)" #img2 id="2" [src]="project.pics_arr[2]">
+            </div>
+            <div class="project-name-wrapper">
+              <h1 class="project-name">
+                {{project.project_name}}</h1>
+            </div>
           </div>
-          <div class="small-imgs-strip">
-            <img class="small-img" (mouseenter)="ProjectCardService.changeTheImg(card, img0)"
-              (mouseleave)="ProjectCardService.defaultPath(card)" #img0 id="0" [src]="project.pics_arr[0]">
-            <img class="small-img" (mouseenter)="ProjectCardService.changeTheImg(card, img1)"
-              (mouseleave)="ProjectCardService.defaultPath(card)" #img1 id="1" [src]="project.pics_arr[1]">
-            <img class="small-img" (mouseenter)="ProjectCardService.changeTheImg(card, img2)"
-              (mouseleave)="ProjectCardService.defaultPath(card)" #img2 id="2" [src]="project.pics_arr[2]">
-          </div>
-          <div class="project-name-wrapper">
-            <h1 class="project-name">
-              {{project.project_name}}</h1>
-          </div>
-        </div>
-      </mat-card>
+        </mat-card>
+      </ng-container>
     </div>
+  </div>
+  <div class="no-project-wrapper" *ngIf="this.ProjectCardService.NoProjectsFound === false ">
+    <mat-card class="no-project-container">
+      <mat-label class="no-project-mat-label">
+        We couldn't Find a Project that fits your Preferences.
+        Contact co-founder @svesali.eth in our Discord
+        and we'll personally make sure you connected with the right project.
+      </mat-label>
+      <button mat-raised-button routerLink="https://discord.gg/KUqYHPhkJb">Join Our Discord</button>
+    </mat-card>
   </div>
 </div>

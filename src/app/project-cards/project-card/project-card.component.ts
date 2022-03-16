@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HomePageService } from 'src/app/the-home-page/home-page.service';
 import { ProjectCardService } from '../services/project-card.service';
 
 @Component({
@@ -7,7 +8,10 @@ import { ProjectCardService } from '../services/project-card.service';
   styleUrls: ['./project-card.component.scss'],
 })
 export class ProjectCardComponent implements OnInit {
-  constructor(public ProjectCardService: ProjectCardService) {}
+  constructor(
+    public ProjectCardService: ProjectCardService,
+    public HomePageService: HomePageService
+  ) {}
 
   ngOnInit(): void {
     this.ProjectCardService.queryPublicProjects();
