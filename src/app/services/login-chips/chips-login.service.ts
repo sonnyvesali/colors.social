@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { map, from, of } from 'rxjs';
-import { UserSpecificInfoService } from 'src/app/services/user-info/user-specific-info.service';
-import { ProjectSpecificInfoService } from '../user-info/project-specific-info.service';
+import { map } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })

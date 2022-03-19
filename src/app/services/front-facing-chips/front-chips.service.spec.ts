@@ -13,4 +13,6 @@ describe('FrontChipsService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should get selected roles', () => {});
 });

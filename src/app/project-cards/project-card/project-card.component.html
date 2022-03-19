@@ -4,19 +4,22 @@
       (mouseleave)="ProjectCardService.HoverOut()" [id]='"card_"+i'>
       <ng-container
         *ngIf="ProjectCardService.PicObj[card.id].selected_filter === null || ProjectCardService.PicObj[card.id].selected_filter === true ">
-        <mat-card class="the-mat-card">
+        <mat-card class="the-mat-card" [routerLink]="['/profile', project.project_name]">
           <div>
             <div class="main-img-wrapper">
               <img class="main-img"
                 [src]="ProjectCardService.PicObj[card.id].selected === false ? project.pics_arr[0] : ProjectCardService.imagePath">
             </div>
             <div class="small-imgs-strip">
-              <img class="small-img" (mouseenter)="ProjectCardService.changeTheImg(card, img0)"
+              <img class="small-img" #img (mouseenter)="ProjectCardService.changeTheImg(card, img)"
+                (mouseleave)="ProjectCardService.defaultPath(card)" *ngFor="let imgs of project.pics_arr; let j = index"
+                [id]="j" [src]="imgs">
+              <!-- <img class="small-img" (mouseenter)="ProjectCardService.changeTheImg(card, img0)"
                 (mouseleave)="ProjectCardService.defaultPath(card)" #img0 id="0" [src]="project.pics_arr[0]">
               <img class="small-img" (mouseenter)="ProjectCardService.changeTheImg(card, img1)"
                 (mouseleave)="ProjectCardService.defaultPath(card)" #img1 id="1" [src]="project.pics_arr[1]">
               <img class="small-img" (mouseenter)="ProjectCardService.changeTheImg(card, img2)"
-                (mouseleave)="ProjectCardService.defaultPath(card)" #img2 id="2" [src]="project.pics_arr[2]">
+                (mouseleave)="ProjectCardService.defaultPath(card)" #img2 id="2" [src]="project.pics_arr[2]"> -->
             </div>
             <div class="project-name-wrapper">
               <h1 class="project-name">

@@ -25,7 +25,7 @@ export class ProfSettingsS1Component implements OnInit {
     this.UserandProjectInfo.getUserInfo();
     this.afAuth.authState.subscribe((user) => {
       if (user) {
-        this.UserSpecificInfo.getUserInfo();
+        // this.UserSpecificInfo.getUserInfo();
         this.chipsService.getUserInterests();
       }
     });

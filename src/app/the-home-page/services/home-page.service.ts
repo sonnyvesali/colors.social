@@ -59,6 +59,7 @@ export class HomePageService {
         null
       );
     }
+    this.projectCard.NoProjectsFound = null;
     this.chipsLogin.clearChips();
   }
 

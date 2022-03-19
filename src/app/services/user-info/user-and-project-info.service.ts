@@ -77,7 +77,7 @@ export class UserAndProjectInfoService {
           .valueChanges()
           .pipe(
             map((info: any) => {
-              return [info.userType, info.useruid];
+              return [info.userType, info.userUID];
             })
           );
 

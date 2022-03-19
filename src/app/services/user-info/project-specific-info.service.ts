@@ -26,14 +26,6 @@ export interface ProjectDoc {
 })
 export class ProjectSpecificInfoService {
   constructor(private af: AngularFirestore, private afAuth: AngularFireAuth) {}
-  userUID!: string;
-  discordLink!: string;
-  listedContributors!: string;
-  profileReadyToList!: string;
-  projectName!: string;
-  projectBio!: string;
-  projectNiches!: string;
-  projectDocs: any[] = [];
 
   getTheDocs() {
     return this.af

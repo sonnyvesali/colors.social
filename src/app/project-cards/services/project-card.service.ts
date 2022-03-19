@@ -29,7 +29,7 @@ export class ProjectCardService {
   }
 
   queryPublicProjects() {
-    this.projectRef = this.af.collection('users', (ref) =>
+    this.projectRef = this.af.collection('projects', (ref) =>
       ref.where('readyToList', '==', true)
     );
     this.project$ = this.projectRef.valueChanges();
@@ -59,6 +59,7 @@ export class ProjectCardService {
   }
 
   changeTheImg(parentElement: any, Image: any) {
+    console.log(Image.id);
     this.imagePath = this.PicObj[parentElement.id][0][Image.id];
   }
 

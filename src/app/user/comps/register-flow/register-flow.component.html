@@ -17,23 +17,29 @@
               Sign in As a User
             </button>
           </mat-card>
-          <mat-card class="user-tier">
+          <!-- <mat-card class="user-tier">
             <img mat-card-image class="user-pic" src="assets/register-flow-assets/register-project.png">
             <mat-card-title #Project>Project</mat-card-title>
             <mat-card-subtitle>List Your Project & Attract Contributors</mat-card-subtitle>
             <button mat-raised-button color="accent" (click)="this.StepperService.goForward(stepper, Project)">
               Sign in as Project
             </button>
-          </mat-card>
+          </mat-card> -->
         </mat-step>
         <mat-step>
+          <button class="back-btn" mat-icon-button (click)="this.StepperService.goBack(stepper)">
+            <img src="assets/edit-profile-assets/blue-back-arrow-icon.svg">
+          </button>
           <ng-container class="user-form" *ngIf="this.StepperService.chosenUserType === 'User'">
-            <app-create-user-forms></app-create-user-forms>
+            <a target="_blank" href="https://buy.stripe.com/3cscQ4eF0bJp2YMdQQ">
+              <button mat-raised-button>Purchase Colors Pro</button>
+            </a>
+            <!-- <app-create-user-forms></app-create-user-forms> -->
           </ng-container>
           <ng-container *ngIf="this.StepperService.chosenUserType === 'Project'">
-            <mat-card>
+            <!-- <mat-card>
               <app-create-project-form1></app-create-project-form1>
-            </mat-card>
+            </mat-card> -->
             <mat-step class="user-tier-container">
               <mat-card>
                 <app-create-project-form2></app-create-project-form2>
