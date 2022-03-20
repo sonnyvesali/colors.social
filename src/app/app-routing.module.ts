@@ -6,6 +6,20 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
+      import('./landing-page/landing-page.module').then(
+        (m) => m.LandingPageModule
+      ),
+  },
+  {
+    path: 'demo',
+    loadChildren: () =>
+      import('./demo-profile-pages/demo-profile-pages.module').then(
+        (m) => m.DemoProfilePagesModule
+      ),
+  },
+  {
+    path: 'projects',
+    loadChildren: () =>
       import('./the-home-page/the-home-page.module').then(
         (m) => m.TheHomePageModule
       ),

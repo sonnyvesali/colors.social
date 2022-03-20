@@ -4,7 +4,6 @@ import {
   AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
 import { Observable, of } from 'rxjs';
-import { HomePageService } from 'src/app/the-home-page/home-page.service';
 @Injectable({
   providedIn: 'root',
 })
@@ -12,6 +11,7 @@ export class ProjectCardService {
   constructor(private af: AngularFirestore) {}
 
   imagePath!: any;
+  picsArr: string[] = [];
   NoProjectsFound: boolean | null = null;
   projectRef!: AngularFirestoreCollection<any>;
   project$: Observable<any> = of('');
@@ -26,6 +26,25 @@ export class ProjectCardService {
       object
     );
     lastObj[lastKey as string] = value;
+  }
+
+  queryDemo() {
+    this.projectRef = this.af.collection('demo', (ref) =>
+      ref.where('readyToList', '==', true)
+    );
+    this.project$ = this.projectRef.valueChanges();
+    this.project$.subscribe((doc) => {
+      this.picsArr = doc[0].pics_arr;
+      this.imagePath = doc[0].pics_arr[0];
+    });
+  }
+
+  changeDemoImg(Image: any) {
+    this.imagePath = this.picsArr[Image.id];
+  }
+
+  defaultDemoImg() {
+    this.imagePath = this.picsArr[0];
   }
 
   queryPublicProjects() {

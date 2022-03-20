@@ -1,0 +1,22 @@
+<div class="mat-card-outer-container">
+  <div *ngFor="let project of ProjectCardService.project$ | async; let i = index">
+    <div class="mat-card-container" #card>
+      <mat-card class="the-mat-card" [routerLink]="['/demo', project.project_name]">
+        <div>
+          <div class="main-img-wrapper">
+            <img class="main-img" [src]="ProjectCardService.imagePath">
+          </div>
+          <div class="small-imgs-strip">
+            <img class="small-img" #img (mouseenter)="ProjectCardService.changeDemoImg(img)"
+              (mouseleave)="ProjectCardService.defaultDemoImg()" *ngFor="let imgs of project.pics_arr; let j = index"
+              [id]="j" [src]="imgs">
+          </div>
+          <div class="project-name-wrapper">
+            <h1 class="project-name">
+              {{project.project_name}}</h1>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

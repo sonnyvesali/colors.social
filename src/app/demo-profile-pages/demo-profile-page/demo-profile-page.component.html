@@ -1,0 +1,44 @@
+  <mat-card #card class="prof-container" *ngIf="SpecificProject$ | async as SProject">
+    <div *ngIf="GenProject$ | async as GProject">
+      <h1 class="project-name">{{GProject.project_name}}</h1>
+      <div class="prof-card-wrapper">
+        <div class="all-imgs">
+          <div class="main-pic-wrapper">
+            <img class="main-pic" [src]="profilePage.imagePath">
+          </div>
+          <div class="aux-pic-wrapper">
+            <ng-container *ngFor="let pic of GProject.pics_arr let j = index">
+              <img #img class="aux-pics" [id]="j" [src]="pic"
+                (mouseenter)="profilePage.changeTheImg(profilePage.pics_arr, img.id)"
+                (mouseleave)="profilePage.defaultImg(profilePage.pics_arr)">
+            </ng-container>
+          </div>
+        </div>
+        <div class="project-words-wrapper">
+          <div class="bio-wrapper">
+            <div class="q1">
+              <h2>What is {{GProject.project_name}}?</h2>
+              <h4>{{SProject.bio.first_answer}}</h4>
+            </div>
+            <div class="q2">
+              <h2>What Problem is {{GProject.project_name}} solving?</h2>
+              <h4>
+                {{SProject.bio.second_answer}}
+              </h4>
+            </div>
+            <div class="q3">
+              <h2>What are the prereqs to join the founding team?</h2>
+              <h4>{{SProject.bio.third_answer}}</h4>
+            </div>
+            <div class="onboarding-process">
+              <h2 class="onboarding-process-text">{{GProject.project_name}} Onboarding Process</h2>
+              <mat-list>
+                <mat-list-item *ngFor="let op_step of SProject.onboarding_process let i"> {{op_step}}
+                </mat-list-item>
+              </mat-list>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
