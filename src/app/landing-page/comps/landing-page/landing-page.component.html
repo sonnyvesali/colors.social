@@ -1,17 +1,54 @@
 <div class="lp-container">
-  <div class="s1-container tier">
+  <mat-card class="s1-container tier">
     <h1 class="tw" #tw>Find Early Stage Web3 projects that need <br></h1>
     <img class="main-img" src="assets/landing-page-assets/prime-visual.png">
     <h3>We know starting is the hardest part, so we curate the best projects for Web3 contributors of all kinds.</h3>
-  </div>
+  </mat-card>
   <div class="s2-container tier">
     <h1>Live Demo: Colors</h1>
-    <app-demo-project-card></app-demo-project-card>
+    <div class="s2-content-wrapper">
+      <app-demo-project-card></app-demo-project-card>
+    </div>
   </div>
   <div class="s3-container tier">
-
+    <mat-card>
+      <mat-card-title>Colors Pro</mat-card-title>
+      <mat-label>$200 Membership Fee</mat-label>
+      <mat-list>
+        <mat-list-item>1. Unlimited Project Acess</mat-list-item>
+        <mat-list-item>2. Access to Community Discord</mat-list-item>
+        <mat-list-item>3. Weekly 1HR Progress video calls with Co-Founder Sonny</mat-list-item>
+        <button (click)="loginClick()" mat-raised-button color="primary" routerLink="user/login">Sign Up Now</button>
+      </mat-list>
+    </mat-card>
   </div>
   <div class="s4-container tier">
-
+    <mat-accordion>
+      <h1>FAQS</h1>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>Why do I Need Colors? Can't I Just find projects myself?
+        </mat-expansion-panel-header>
+        Yes you could, technically all the opportunities are open sourced, but you will spend more time
+        looking for opportunities than actually practicing what you want. In the beginning,
+        It's a numbers game, and we're trying to maximize your chances with the projects we list.
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>How is this different from a Crypto Job Board?</mat-expansion-panel-header>
+        We're focused on getting early contributors their first contribution to real Web3 Projects.
+        Employers on Job Boards assume some level of professional experience, we don't.
+        We expect a desire to learn on the Job despite the lack of professional experience.
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>How 'skilled' do I have to be?</mat-expansion-panel-header>
+        It is expected that you have leveraged online resources like courses, and have done
+        something on your own, to show proactiveness. For a Social Media Manager, this would
+        be running your own brand page, for developers, this would be a tutorial-free side
+        project.
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>How many projects are on colors currently?</mat-expansion-panel-header>
+        Currently there are 5-10 Projects On Colors
+      </mat-expansion-panel>
+    </mat-accordion>
   </div>
 </div>

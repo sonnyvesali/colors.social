@@ -1,6 +1,22 @@
   <mat-card #card class="prof-container" *ngIf="SpecificProject$ | async as SProject">
     <div *ngIf="GenProject$ | async as GProject">
-      <h1 class="project-name">{{GProject.project_name}}</h1>
+      <div class="upper-wrapper">
+        <span class="filler"></span>
+        <h1 class="project-name">{{GProject.project_name}}</h1>
+        <span class="filler"></span>
+        <div class="socials-container">
+          <button mat-icon-button>
+            <a [href]="SProject.discord" target="_blank">
+              <img class="socials-img" src="assets/socials-assets/discord-logo.png">
+            </a>
+          </button>
+          <button mat-icon-button>
+            <a [href]="SProject.twitter" target="_blank">
+              <img class="socials-img" src="assets/socials-assets/twitter-logo.png">
+            </a>
+          </button>
+        </div>
+      </div>
       <div class="prof-card-wrapper">
         <div class="all-imgs">
           <div class="main-pic-wrapper">

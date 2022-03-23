@@ -16,7 +16,7 @@ export class UserAndProjectInfoService {
   profileCompleted!: boolean;
   profileCreated!: boolean;
   profileInfoArr: boolean[] = [this.profileCompleted, this.profileCreated];
-
+  userHasPaid!: boolean;
   userType!: string;
   userUID!: string;
   userInfoArr!: string[];
@@ -101,4 +101,38 @@ export class UserAndProjectInfoService {
       }
     })
   );
+
+  userPaymentInfo$ = this.afAuth.authState.pipe(
+    switchMap((user) => {
+      if (user) {
+        return this.af
+          .collection(`users/${user.uid}/payments`, (ref) =>
+            ref.where('amount_recieved', 'in', 20000)
+          )
+          .valueChanges();
+      } else {
+        return of(null);
+      }
+    })
+  );
+  hasUserPaid() {
+    this.afAuth.authState.subscribe((user) => {
+      if (user) {
+        const userPaid$ = this.af
+          .collection(`users/${user.uid}/payments`, (ref) =>
+            ref.where('amount_received', '==', 20000)
+          )
+          .valueChanges();
+        return userPaid$.subscribe((doc: any) => {
+          if (doc[0].amount_received === 20000) {
+            this.userHasPaid = true;
+          } else {
+            this.userHasPaid = false;
+          }
+        });
+      } else {
+        return null;
+      }
+    });
+  }
 }

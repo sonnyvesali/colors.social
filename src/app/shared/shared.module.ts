@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ErrorComponent } from '../error/error.component';
 import { CommonModule } from '@angular/common';
@@ -42,6 +43,7 @@ const modules = [
   CommonModule,
   MatCheckboxModule,
   FormsModule,
+  MatProgressSpinnerModule,
   ReactiveFormsModule,
   MatDialogModule,
   MatSelectModule,

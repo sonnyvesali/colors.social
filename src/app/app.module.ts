@@ -11,6 +11,7 @@ import { SharedModule } from './shared/shared.module';
 import { provideFunctions, getFunctions } from '@angular/fire/functions';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire/compat';
+import { MixpanelService } from './services/analytics/mixpanel.service';
 // import { USE_EMULATOR } from '@angular/fire/compat/storage';
 // import { SETTINGS } from '@angular/fire/compat/auth';
 // import { USE_EMULATOR as FIRESTORE_EMULATOR } from '@angular/fire/compat/firestore';

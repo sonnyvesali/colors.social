@@ -3,19 +3,19 @@
     margin: auto;
     text-align: center;
     margin-top: 30px;
-    // background-color: green;
 }
 
 .tw {
     font-size: 30px;
-    // padding: 15px;
-    // padding-top: 500px;
-    // margin-top: 5px;
 }
 
 .s1-container {
-    background-color: #555555;
+    // background-color: #555555;
     border-radius: 10px;
+}
+
+.tier {
+    margin: 30px 0;
 }
 
 .s1-container, .tier {
@@ -26,4 +26,14 @@
 
 .main-img {
     width: clamp(300px, 50vw, 900px)
+}
+
+.s2-content-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+}
+
+mat-label {
+    font-size: larger;
 }

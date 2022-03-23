@@ -1,9 +1,14 @@
 <div *ngIf="this.LoginFormService.user | async ">
-  <ng-container *ngIf="this.userAndProjectInfo.profileCreated === false ">
-    <ng-container *ngIf="this.StepperService.chosenUserType === 'Undecided'">
+  <ng-container *ngIf="this.userAndProjectInfo.userHasPaid === false">
+    <!-- <ng-container *ngIf="this.StepperService.chosenUserType === 'Undecided'"> -->
+    <ng-container *ngIf="loading === false">
       <h1 class="welcome-text">Welcome to the Community!</h1>
       <h3 class="welcome-text">Join as a:</h3>
     </ng-container>
+    <!-- </ng-container> -->
+    <div class="progress-container" *ngIf="loading === true">
+      <mat-progress-spinner mode="indeterminate" color="primary"></mat-progress-spinner>
+    </div>
     <div *ngIf="this.StepperService.chosenUserType !== 'Undecided'" class="margin-filler"></div>
     <div>
       <mat-stepper class="user-tier-container" #stepper>
@@ -12,8 +17,7 @@
             <img mat-card-image class="user-pic" src="assets/register-flow-assets/register-user.png">
             <mat-card-title #User>User</mat-card-title>
             <mat-card-subtitle>Browse & Save Top Web3 Projects</mat-card-subtitle>
-            <button mat-raised-button color="accent" matStepperNext
-              (click)="this.StepperService.goForward(stepper, User)">
+            <button mat-raised-button color="accent" matStepperNext (click)="sendToCheckout()">
               Sign in As a User
             </button>
           </mat-card>
@@ -27,25 +31,19 @@
           </mat-card> -->
         </mat-step>
         <mat-step>
-          <button class="back-btn" mat-icon-button (click)="this.StepperService.goBack(stepper)">
-            <img src="assets/edit-profile-assets/blue-back-arrow-icon.svg">
-          </button>
           <ng-container class="user-form" *ngIf="this.StepperService.chosenUserType === 'User'">
-            <a target="_blank" href="https://buy.stripe.com/3cscQ4eF0bJp2YMdQQ">
-              <button mat-raised-button>Purchase Colors Pro</button>
-            </a>
             <!-- <app-create-user-forms></app-create-user-forms> -->
           </ng-container>
-          <ng-container *ngIf="this.StepperService.chosenUserType === 'Project'">
-            <!-- <mat-card>
+          <!-- <ng-container *ngIf="this.StepperService.chosenUserType === 'Project'"> -->
+          <!-- <mat-card>
               <app-create-project-form1></app-create-project-form1>
             </mat-card> -->
-            <mat-step class="user-tier-container">
+          <!-- <mat-step class="user-tier-container">
               <mat-card>
                 <app-create-project-form2></app-create-project-form2>
               </mat-card>
-            </mat-step>
-          </ng-container>
+            </mat-step> -->
+          <!-- </ng-container> -->
         </mat-step>
       </mat-stepper>
     </div>

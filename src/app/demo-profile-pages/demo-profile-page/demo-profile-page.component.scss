@@ -58,3 +58,24 @@ mat-list-item {
     margin: 0;
     margin-top: 15px;
 }
+
+.socials-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.upper-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.filler {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.socials-img {
+    height: 30px;
+    
+}

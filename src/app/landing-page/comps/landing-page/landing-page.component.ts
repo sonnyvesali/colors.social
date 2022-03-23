@@ -1,5 +1,7 @@
 import { ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { MixpanelService } from 'src/app/services/analytics/mixpanel.service';
+import { SnackService } from 'src/app/services/snackbar/snack.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./landing-page.component.scss'],
 })
 export class LandingPageComponent implements OnInit {
-  constructor() {}
+  constructor(public snack: SnackService, public mixpanel: MixpanelService) {}
 
   @ViewChild('tw') typewriterElement: any;
 
@@ -34,5 +36,9 @@ export class LandingPageComponent implements OnInit {
       .type('YOU!')
       .rest(1000)
       .start();
+  }
+
+  loginClick() {
+    this.mixpanel.track('Clicks on landing page login button');
   }
 }
