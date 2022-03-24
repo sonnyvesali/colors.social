@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs';
 import { ProjectCardService } from 'src/app/project-cards/services/project-card.service';
+import { MixpanelService } from 'src/app/services/analytics/mixpanel.service';
 import { ProfilePageService } from '../services/profile-page.service';
 
 @Component({
@@ -16,7 +17,8 @@ export class ProfilePageComponent implements OnInit {
     private afs: AngularFirestore,
     public ProjectCardService: ProjectCardService,
     private route: ActivatedRoute,
-    public profilePage: ProfilePageService
+    public profilePage: ProfilePageService,
+    private mixpanel: MixpanelService
   ) {}
   GenProject$!: Observable<any>;
   SpecificProject$!: Observable<any>;
@@ -38,8 +40,20 @@ export class ProfilePageComponent implements OnInit {
       })
     );
     this.GenProject$.subscribe((doc: any) => {
+      this.profilePage.projectNiches = doc.niches;
+      this.profilePage.projectName = doc.project_name;
+      this.profilePage.projectRoles = doc.open_roles;
       this.profilePage.imagePath = doc.pics_arr[0];
       this.profilePage.pics_arr = doc.pics_arr;
     });
   }
+
+  UserProjectMatch() {
+    this.mixpanel.track('User Project Match', {
+      'Project Name': this.profilePage.projectName,
+      'Project Niches': this.profilePage.projectNiches,
+      'Open Roles': this.profilePage.projectRoles,
+    });
+  }
+  // how are we going to implement this?
 }

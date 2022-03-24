@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { LoginFormService } from '../../services/login-form.service';
 // import { Router } from '@angular/router';
 import { Router } from '@angular/router';
+import { MixpanelService } from 'src/app/services/analytics/mixpanel.service';
 
 @Component({
   selector: 'app-login-form',
@@ -13,9 +14,9 @@ import { Router } from '@angular/router';
 })
 export class LoginFormComponent implements OnInit {
   constructor(
+    private mixPanel: MixpanelService,
     private fb: FormBuilder,
-    public LoginFormService: LoginFormService,
-    private router: Router
+    public LoginFormService: LoginFormService
   ) {}
 
   form!: FormGroup;
@@ -24,6 +25,7 @@ export class LoginFormComponent implements OnInit {
   // serverMessage: string | unknown;
 
   ngOnInit() {
+    this.mixPanel.track('Login Page View');
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
     });
@@ -50,6 +52,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   onSubmit() {
+    this.mixPanel.track('Registered User');
     const email = this.email?.value;
     if (this.type === 'signup' || this.type === 'login') {
       this.LoginFormService.sendEmailLink(email);

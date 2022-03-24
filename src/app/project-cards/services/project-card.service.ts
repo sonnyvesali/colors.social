@@ -4,11 +4,15 @@ import {
   AngularFirestoreCollection,
 } from '@angular/fire/compat/firestore';
 import { Observable, of } from 'rxjs';
+import { MixpanelService } from 'src/app/services/analytics/mixpanel.service';
 @Injectable({
   providedIn: 'root',
 })
 export class ProjectCardService {
-  constructor(private af: AngularFirestore) {}
+  constructor(
+    private af: AngularFirestore,
+    private mixpanel: MixpanelService
+  ) {}
 
   imagePath!: any;
   picsArr: string[] = [];
@@ -61,15 +65,31 @@ export class ProjectCardService {
         this.setObject(this.PicObj, `card_${i}.selected_filter`, null);
         this.setObject(this.PicObj, `card_${i}.open_roles`, doc[i].open_roles);
         this.setObject(this.PicObj, `card_${i}.niches`, doc[i].niches);
+        this.setObject(this.PicObj, `card_${i}.name`, doc[i].project_name);
       }
     });
     console.log(this.PicObj, 'pic objs');
     // console.log(this.loginChips.getUserSkills(), 'getuserskills');
   }
-  HoverIn(element: any) {
-    this.PicObj[element.id].selected = true;
-    this.SelectedID = element.id;
-    this.imagePath = this.PicObj[element.id][0][0];
+  HoverIn(el: any) {
+    this.mixpanel.projectInteraction(
+      'Project Hover',
+      `${this.PicObj[el.id].name}`,
+      `${this.PicObj[el.id].niches}`,
+      `${this.PicObj[el.id].open_roles}`
+    );
+    this.PicObj[el.id].selected = true;
+    this.SelectedID = el.id;
+    this.imagePath = this.PicObj[el.id][0][0];
+  }
+
+  trackProjectClicks(el: any) {
+    this.mixpanel.projectInteraction(
+      'Project Click',
+      `${this.PicObj[el.id].name}`,
+      `${this.PicObj[el.id].niches}`,
+      `${this.PicObj[el.id].open_roles}`
+    );
   }
 
   HoverOut() {

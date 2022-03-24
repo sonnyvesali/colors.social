@@ -1,27 +1,26 @@
-<div *ngIf="this.LoginFormService.user | async ">
-  <ng-container *ngIf="this.userAndProjectInfo.userHasPaid === false">
-    <!-- <ng-container *ngIf="this.StepperService.chosenUserType === 'Undecided'"> -->
-    <ng-container *ngIf="loading === false">
-      <h1 class="welcome-text">Welcome to the Community!</h1>
-      <h3 class="welcome-text">Join as a:</h3>
-    </ng-container>
-    <!-- </ng-container> -->
-    <div class="progress-container" *ngIf="loading === true">
-      <mat-progress-spinner mode="indeterminate" color="primary"></mat-progress-spinner>
-    </div>
-    <div *ngIf="this.StepperService.chosenUserType !== 'Undecided'" class="margin-filler"></div>
-    <div>
-      <mat-stepper class="user-tier-container" #stepper>
-        <mat-step class="user-tier-container">
-          <mat-card class="user-tier">
-            <img mat-card-image class="user-pic" src="assets/register-flow-assets/register-user.png">
-            <mat-card-title #User>User</mat-card-title>
-            <mat-card-subtitle>Browse & Save Top Web3 Projects</mat-card-subtitle>
-            <button mat-raised-button color="accent" matStepperNext (click)="sendToCheckout()">
-              Sign in As a User
-            </button>
-          </mat-card>
-          <!-- <mat-card class="user-tier">
+<ng-container
+  *ngIf="this.userAndProjectInfo.userHasPaid === false || this.userAndProjectInfo.userHasPaid === undefined">
+  <ng-container *ngIf="loading === false">
+    <h1 class="welcome-text">Welcome to the Community!</h1>
+    <h3 class="welcome-text">Join as a:</h3>
+  </ng-container>
+  <div class="progress-container" *ngIf="loading === true">
+    <mat-progress-spinner mode="indeterminate" color="primary"></mat-progress-spinner>
+  </div>
+  <!-- *ngIf="this.StepperService.chosenUserType !== 'Undecided'"-->
+  <div class="margin-filler"></div>
+  <div>
+    <mat-stepper class="user-tier-container" #stepper>
+      <mat-step class="user-tier-container">
+        <mat-card class="user-tier">
+          <img mat-card-image class="user-pic" src="assets/register-flow-assets/register-user.png">
+          <mat-card-title #User>User</mat-card-title>
+          <mat-card-subtitle>Browse & Save Top Web3 Projects</mat-card-subtitle>
+          <button mat-raised-button color="accent" matStepperNext (click)="sendToCheckout()">
+            Sign in As a User
+          </button>
+        </mat-card>
+        <!-- <mat-card class="user-tier">
             <img mat-card-image class="user-pic" src="assets/register-flow-assets/register-project.png">
             <mat-card-title #Project>Project</mat-card-title>
             <mat-card-subtitle>List Your Project & Attract Contributors</mat-card-subtitle>
@@ -29,33 +28,33 @@
               Sign in as Project
             </button>
           </mat-card> -->
-        </mat-step>
-        <mat-step>
-          <ng-container class="user-form" *ngIf="this.StepperService.chosenUserType === 'User'">
-            <!-- <app-create-user-forms></app-create-user-forms> -->
-          </ng-container>
-          <!-- <ng-container *ngIf="this.StepperService.chosenUserType === 'Project'"> -->
-          <!-- <mat-card>
+      </mat-step>
+      <mat-step>
+        <!-- *ngIf="this.StepperService.chosenUserType === 'User'"-->
+        <ng-container class="user-form">
+          <!-- <app-create-user-forms></app-create-user-forms> -->
+        </ng-container>
+        <!-- <ng-container *ngIf="this.StepperService.chosenUserType === 'Project'"> -->
+        <!-- <mat-card>
               <app-create-project-form1></app-create-project-form1>
             </mat-card> -->
-          <!-- <mat-step class="user-tier-container">
+        <!-- <mat-step class="user-tier-container">
               <mat-card>
                 <app-create-project-form2></app-create-project-form2>
               </mat-card>
             </mat-step> -->
-          <!-- </ng-container> -->
-        </mat-step>
-      </mat-stepper>
+        <!-- </ng-container> -->
+      </mat-step>
+    </mat-stepper>
+  </div>
+</ng-container>
+<ng-container *ngIf="this.userAndProjectInfo.profileCreated === true">
+  <mat-card class=" user-tier the-mat-card">
+    <div class="content-container">
+      <mat-label>
+        You Already Created your Account
+      </mat-label>
+      <button class="home-btn" routerLink="/" mat-flat-button>Go Home</button>
     </div>
-  </ng-container>
-  <ng-container *ngIf="this.userAndProjectInfo.profileCreated === true">
-    <mat-card class=" user-tier the-mat-card">
-      <div class="content-container">
-        <mat-label>
-          You Already Created your Account
-        </mat-label>
-        <button class="home-btn" routerLink="/" mat-flat-button>Go Home</button>
-      </div>
-    </mat-card>
-  </ng-container>
-</div>
+  </mat-card>
+</ng-container>

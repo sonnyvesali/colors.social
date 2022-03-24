@@ -13,7 +13,9 @@ export class LandingPageComponent implements OnInit {
 
   @ViewChild('tw') typewriterElement: any;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.mixpanel.landingPageView();
+  }
 
   ngAfterViewInit() {
     const Typewriter = require('t-writer.js');
@@ -36,9 +38,5 @@ export class LandingPageComponent implements OnInit {
       .type('YOU!')
       .rest(1000)
       .start();
-  }
-
-  loginClick() {
-    this.mixpanel.track('Clicks on landing page login button');
   }
 }

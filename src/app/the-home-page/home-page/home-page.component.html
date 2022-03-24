@@ -1,49 +1,49 @@
-<div class="side-nav-container" (show)="true">
-  <mat-sidenav-container class="mat-side-nav-container">
-    <mat-sidenav [fixedInViewport]="true" #nav mode="over" [(opened)]="opened">
-      <div class="side-nav-wrapper">
-        <h1>Filter By</h1>
-        <mat-accordion>
-          <mat-expansion-panel [expanded]="true">
-            <mat-expansion-panel-header>Roles</mat-expansion-panel-header>
-            <!-- <h3>Roles</h3> -->
-            <mat-chip-list>
-              <app-skills-chips-list></app-skills-chips-list>
-            </mat-chip-list>
-          </mat-expansion-panel>
-        </mat-accordion>
-        <mat-accordion>
-          <mat-expansion-panel [expanded]="true">
-            <mat-expansion-panel-header>Niches</mat-expansion-panel-header>
-            <!-- <h3>Niches</h3> -->
-            <mat-chip-list>
-              <app-niche-chips-list></app-niche-chips-list>
-            </mat-chip-list>
-          </mat-expansion-panel>
-        </mat-accordion>
-        <div class="btn-outter-wrapper">
-          <div class="btn-wrapper">
-            <button (click)="HomePageService.clearFilter()" class="filter-btn" mat-raised-button
-              color="primary">Clear</button>
-            <button (click)="HomePageService.applyFilter()" class="filter-btn" mat-raised-button color="primary">Apply
-              Changes</button>
+<ng-container>
+  <div class="side-nav-container" (show)="true">
+    <mat-sidenav-container class="mat-side-nav-container">
+      <mat-sidenav [fixedInViewport]="true" #nav mode="over" [(opened)]="opened">
+        <div class="side-nav-wrapper">
+          <h1>Filter By</h1>
+          <mat-accordion>
+            <mat-expansion-panel [expanded]="true">
+              <mat-expansion-panel-header>Roles</mat-expansion-panel-header>
+              <mat-chip-list>
+                <app-skills-chips-list></app-skills-chips-list>
+              </mat-chip-list>
+            </mat-expansion-panel>
+          </mat-accordion>
+          <mat-accordion>
+            <mat-expansion-panel [expanded]="true">
+              <mat-expansion-panel-header>Niches</mat-expansion-panel-header>
+              <mat-chip-list>
+                <app-niche-chips-list></app-niche-chips-list>
+              </mat-chip-list>
+            </mat-expansion-panel>
+          </mat-accordion>
+          <div class="btn-outter-wrapper">
+            <div class="btn-wrapper">
+              <button (click)="HomePageService.clearFilter()" class="filter-btn" mat-raised-button
+                color="primary">Clear</button>
+              <button (click)="HomePageService.applyFilter()" class="filter-btn" mat-raised-button color="primary">Apply
+                Changes</button>
+            </div>
           </div>
         </div>
-      </div>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <div class="filter-btn-wrapper">
-        <mat-chip (click)="toggleFilter(nav)">
-          <img class="filter-img" height="100%" src="assets/home-page-assets/filters.svg">
-          <ng-container *ngIf="opened">
-            Hide filter
-          </ng-container>
-          <ng-container *ngIf="!opened">
-            Show Filter
-          </ng-container>
-        </mat-chip>
-      </div>
-      <app-project-card></app-project-card>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-</div>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <div class="filter-btn-wrapper">
+          <mat-chip (click)="toggleFilter(nav)">
+            <img class="filter-img" height="100%" src="assets/home-page-assets/filters.svg">
+            <ng-container *ngIf="opened">
+              Hide filter
+            </ng-container>
+            <ng-container *ngIf="!opened">
+              Show Filter
+            </ng-container>
+          </mat-chip>
+        </div>
+        <app-project-card></app-project-card>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+</ng-container>

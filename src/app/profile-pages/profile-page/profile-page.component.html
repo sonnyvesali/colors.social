@@ -5,7 +5,8 @@
         <h1 class="project-name">{{GProject.project_name}}</h1>
         <span class="filler"></span>
         <div class="socials-container">
-          <button mat-icon-button>
+          <!--      Insert Mixpanel Event Here-->
+          <button mat-icon-button (click)="UserProjectMatch()">
             <a [href]="SProject.discord" target="_blank">
               <img class="socials-img" src="assets/socials-assets/discord-logo.png">
             </a>

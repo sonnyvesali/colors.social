@@ -4,7 +4,8 @@
       (mouseleave)="ProjectCardService.HoverOut()" [id]='"card_"+i'>
       <ng-container
         *ngIf="ProjectCardService.PicObj[card.id].selected_filter === null || ProjectCardService.PicObj[card.id].selected_filter === true ">
-        <mat-card class="the-mat-card" [routerLink]="['/profile', project.project_name]">
+        <mat-card (click)="ProjectCardService.trackProjectClicks(card)" class="the-mat-card"
+          [routerLink]="['/profile', project.project_name]">
           <div>
             <div class="main-img-wrapper">
               <img class="main-img"

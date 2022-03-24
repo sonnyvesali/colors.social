@@ -4,15 +4,10 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireFunctions } from '@angular/fire/compat/functions';
 import { Router } from '@angular/router';
 import { loadStripe } from '@stripe/stripe-js';
-import { first, of } from 'rxjs';
+import { MixpanelService } from 'src/app/services/analytics/mixpanel.service';
 import { UserAndProjectInfoService } from 'src/app/services/user-info/user-and-project-info.service';
 import { LoginFormService } from '../../services/login-form.service';
 import { StepperService } from '../../services/stepper.service';
-import { getApp } from 'firebase/app';
-import {
-  getStripePayments,
-  createCheckoutSession,
-} from '@stripe/firestore-stripe-payments';
 @Component({
   selector: 'app-register-flow',
   templateUrl: './register-flow.component.html',
@@ -21,25 +16,30 @@ import {
 export class RegisterFlowComponent implements OnInit {
   constructor(
     public afAuth: AngularFireAuth,
-    public functions: AngularFireFunctions,
-    public af: AngularFirestore,
-    public LoginFormService: LoginFormService,
+    private functions: AngularFireFunctions,
+    private af: AngularFirestore,
     public userAndProjectInfo: UserAndProjectInfoService,
     private router: Router,
-    public StepperService: StepperService
+    private mixPanel: MixpanelService // public StepperService: StepperService
   ) {}
 
   loading = false;
 
   ngOnInit(): void {
+    this.mixPanel.track('Register Page View');
     this.userAndProjectInfo.hasUserPaid();
-    this.userAndProjectInfo.getProfileInfo();
-    if ((this.userAndProjectInfo.userHasPaid === false) === false) {
+    if (this.userAndProjectInfo.userHasPaid === true) {
       this.router.navigate(['/']);
     }
+    this.afAuth.authState.subscribe((user) => {
+      if (user) {
+        this.mixPanel.identifyUser(user.uid);
+      }
+    });
   }
 
   async sendToCheckout() {
+    this.mixPanel.track('User Attempts to Pay');
     this.loading = true;
     this.afAuth.authState.subscribe((user) => {
       if (user) {

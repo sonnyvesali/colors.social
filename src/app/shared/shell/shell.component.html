@@ -9,25 +9,30 @@
         <div class="navigation-elements">
           <!--If they're logged out-->
           <div *ngIf="!(afAuth.authState | async)">
-            <a class="sign-up" mat-flat-button routerLink="/user/login" type="contained">Sign Up!</a>
+            <!-- Add mixpanel-->
+            <a class="sign-up" mat-flat-button routerLink="/user/login" color="primary"
+              (click)="mixPanel.signedUpViaNavBar()" type="contained">Sign Up!</a>
           </div>
           <div *ngIf="afAuth.authState | async as user">
             <div class="user-info">
-              <!-- <img class="avatar" [src]="user.photoURL">
-              <span class='username'>{{user.displayName}}</span> -->
-
+              <ng-container *ngIf="UserAndProjectInfo.userHasPaid === true">
+                <button mat-button color="primary" routerLink="/projects">Find Projects</button>
+              </ng-container>
+              <ng-container *ngIf="UserAndProjectInfo.userHasPaid === false">
+                <button mat-button color="primary" routerLink="/user/register">Upgrade</button>
+              </ng-container>
               <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
                 <mat-icon>more_vert</mat-icon>
               </button>
               <mat-menu #menu='matMenu'>
-                <a mat-menu-item>
+                <!-- <a mat-menu-item>
                   <img class="icon-img" src="assets/edit-profile-assets/white-heart.svg">
                   <span class="nav-text">View Favorites</span>
                 </a>
                 <a mat-menu-item routerLink="/edit-profile">
                   <img class="icon-img" src="assets/edit-profile-assets/white-settings.svg">
                   <span class="nav-text">Profile Settings</span>
-                </a>
+                </a> -->
                 <a mat-menu-item (click)="afAuth.signOut()" routerLink="/">
                   <img class="icon-img" src="assets/edit-profile-assets/white-logout.svg">
                   <span class="nav-text">Sign Out</span>

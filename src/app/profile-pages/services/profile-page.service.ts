@@ -8,6 +8,9 @@ export class ProfilePageService {
 
   imagePath!: any;
   pics_arr!: string[];
+  projectNiches!: string[];
+  projectRoles!: string[];
+  projectName!: string;
 
   changeTheImg(arr: string[], id: string) {
     this.imagePath = arr[Number(id)];
