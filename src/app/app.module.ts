@@ -1,4 +1,8 @@
 import { NgModule } from '@angular/core';
+import { USE_EMULATOR as USE_AUTH_EMULATOR } from '@angular/fire/compat/auth';
+import { USE_EMULATOR as USE_DATABASE_EMULATOR } from '@angular/fire/compat/database';
+import { USE_EMULATOR as USE_FIRESTORE_EMULATOR } from '@angular/fire/compat/firestore';
+import { USE_EMULATOR as USE_FUNCTIONS_EMULATOR } from '@angular/fire/compat/functions';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,12 +38,20 @@ import { ProjectCardsModule } from './project-cards/project-cards.module';
   ],
   providers: [
     // {
-    //   provide: AUTH_EMULATOR,
-    //   useValue: environment.production ? undefined : ['http://localhost/9099'],
+    //   provide: USE_AUTH_EMULATOR,
+    //   useValue: environment.production ? undefined : ['http://localhost', 9099],
     // },
     // {
-    //   provide: FIRESTORE_EMULATOR,
-    //   useValue: environment.production ? undefined : ['http://localhost/8080'],
+    //   provide: USE_DATABASE_EMULATOR,
+    //   useValue: environment.production ? undefined : ['http://localhost', 9000],
+    // },
+    // {
+    //   provide: USE_FIRESTORE_EMULATOR,
+    //   useValue: environment.production ? undefined : ['http://localhost', 8080],
+    // },
+    // {
+    //   provide: USE_FUNCTIONS_EMULATOR,
+    //   useValue: environment.production ? undefined : ['http://localhost', 5001],
     // },
   ],
   bootstrap: [AppComponent],

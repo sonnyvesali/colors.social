@@ -126,6 +126,7 @@ export class UserAndProjectInfoService {
         return userPaid$.subscribe((doc: any) => {
           if (doc[0].amount_received === 20000) {
             this.userHasPaid = true;
+            this.af.doc(`users/${user.uid}`).update({ hasPaid: true });
           } else {
             this.userHasPaid = false;
           }

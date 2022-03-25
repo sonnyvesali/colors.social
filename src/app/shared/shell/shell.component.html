@@ -15,10 +15,13 @@
           </div>
           <div *ngIf="afAuth.authState | async as user">
             <div class="user-info">
+              <a href="https://discord.gg/KUqYHPhkJb">
+                <button mat-button color="primary">Join our Discord!</button>
+              </a>
               <ng-container *ngIf="UserAndProjectInfo.userHasPaid === true">
                 <button mat-button color="primary" routerLink="/projects">Find Projects</button>
               </ng-container>
-              <ng-container *ngIf="UserAndProjectInfo.userHasPaid === false">
+              <ng-container *ngIf="UserAndProjectInfo.userHasPaid === false || !UserAndProjectInfo.userHasPaid">
                 <button mat-button color="primary" routerLink="/user/register">Upgrade</button>
               </ng-container>
               <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">

@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { LoginFormService } from '../../services/login-form.service';
-// import { Router } from '@angular/router';
-import { Router } from '@angular/router';
 import { MixpanelService } from 'src/app/services/analytics/mixpanel.service';
 
 @Component({
@@ -22,7 +18,6 @@ export class LoginFormComponent implements OnInit {
   form!: FormGroup;
   type: string = 'signup';
   loading: boolean = false;
-  // serverMessage: string | unknown;
 
   ngOnInit() {
     this.mixPanel.track('Login Page View');
@@ -60,4 +55,3 @@ export class LoginFormComponent implements OnInit {
     }
   }
 }
-/* */

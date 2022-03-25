@@ -3,9 +3,10 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
-    "types": ["stripe-v3"],
+    "types": ["stripe-v3", "jest"],
     "typeRoots": [
-      "stripe-v3"
+      "stripe-v3",
+      "jest"
     ],
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

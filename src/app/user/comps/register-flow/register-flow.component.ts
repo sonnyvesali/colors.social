@@ -6,8 +6,6 @@ import { Router } from '@angular/router';
 import { loadStripe } from '@stripe/stripe-js';
 import { MixpanelService } from 'src/app/services/analytics/mixpanel.service';
 import { UserAndProjectInfoService } from 'src/app/services/user-info/user-and-project-info.service';
-import { LoginFormService } from '../../services/login-form.service';
-import { StepperService } from '../../services/stepper.service';
 @Component({
   selector: 'app-register-flow',
   templateUrl: './register-flow.component.html',

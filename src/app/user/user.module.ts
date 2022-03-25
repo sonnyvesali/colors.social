@@ -10,7 +10,6 @@ import { CreateProjectForm1Component } from './comps/register-flow/register-form
 import { CreateProjectForm2Component } from './comps/register-flow/register-forms/create-project-form2/create-project-form2.component';
 import { CreateUserFormsComponent } from './comps/register-flow/register-forms/create-user-forms/create-user-forms.component';
 import { LoginRedirectComponent } from './comps/login-redirect/login-redirect.component';
-import { RegisterPaymentComponent } from './comps/register-payment/register-payment.component';
 @NgModule({
   declarations: [
     LoginPageComponent,
@@ -21,7 +20,6 @@ import { RegisterPaymentComponent } from './comps/register-payment/register-paym
     CreateProjectForm2Component,
     CreateUserFormsComponent,
     LoginRedirectComponent,
-    RegisterPaymentComponent,
   ],
   imports: [CommonModule, SharedModule, UserRoutingModule],
 })

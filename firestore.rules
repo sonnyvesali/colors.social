@@ -1,8 +1,51 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write
+    function isLoggedIn() {
+      return request.auth.uid != null;
+    }
+
+    function belongsTo(userId) {
+      return request.auth.uid == userId;
+    }
+
+    function canEdit() {
+      return request.resource.data.keys().hasAny(['email', 'userUID', 'profileCreated', 'hasPaid'])
+    }
+
+
+    function hasPaid() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.hasPaid == true;
+    }
+
+    function isAnEditor() {
+      return resource.data.editor == request.auth.uid;
+    }
+
+    match /demo/{demoDocs=**} {
+      allow read;
+      allow write: if false;
+    }
+
+    match /users/{userDoc} {
+      allow read: if isLoggedIn() && belongsTo(userDoc);
+      allow write, update: if isLoggedIn() && belongsTo(userDoc) && canEdit();
+      match /checkout_sessions {
+        allow read, write: if false;
+      }
+      match /payments/{paymentDoc} {
+        allow read: if isLoggedIn() && belongsTo(userDoc)
+        allow write: if false;
+      }
+      match /checkout_sessions/{checkout_doc} {
+        allow read, write: if isLoggedIn() && belongsTo(userDoc)
+      }
+    }
+
+    match /projects/{productsDoc=**} {
+      allow read: if isLoggedIn() && hasPaid();
+      // allow write: if isLoggedIn() && isAnEditor(request.auth.uid);
+      // allow read: if isLoggedIn()  isAnEditor(request.auth.uid);
     }
   }
 }

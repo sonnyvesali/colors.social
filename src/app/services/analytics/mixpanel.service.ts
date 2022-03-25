@@ -51,7 +51,6 @@ export class MixpanelService {
     mixpanel.track('Login Page View');
   }
 
-  // markup places: Registerpage.component.ts && html
   registerPageView() {
     mixpanel.track('Register Page View');
   }
@@ -68,9 +67,6 @@ export class MixpanelService {
       'Open Roles': projectRoles,
     });
   }
-  //====================DONE BAR ====================//
-  // markup places: profilePages.component.ts && html
-
   Zero(nichesArr: string[], rolesArr: string[]) {
     mixpanel.track('ZERO', {
       'Zero Niches': nichesArr,

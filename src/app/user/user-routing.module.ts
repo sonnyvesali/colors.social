@@ -5,7 +5,9 @@ import { RegisterFlowComponent } from './comps/register-flow/register-flow.compo
 import { NewUserGuard } from './new-user.guard';
 import {
   AngularFireAuthGuard,
+  emailVerified,
   redirectLoggedInTo,
+  redirectUnauthorizedTo,
 } from '@angular/fire/compat/auth-guard';
 import { LoginRedirectComponent } from './comps/login-redirect/login-redirect.component';
 const routes: Routes = [
@@ -19,7 +21,8 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterFlowComponent,
-    canActivate: [NewUserGuard],
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedTo },
   },
   {
     path: 'new-user',
