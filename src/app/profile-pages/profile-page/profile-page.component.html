@@ -5,17 +5,31 @@
         <h1 class="project-name">{{GProject.project_name}}</h1>
         <span class="filler"></span>
         <div class="socials-container">
-          <!--      Insert Mixpanel Event Here-->
-          <button mat-icon-button (click)="UserProjectMatch()">
-            <a [href]="SProject.discord" target="_blank">
-              <img class="socials-img" src="assets/socials-assets/discord-logo.png">
-            </a>
-          </button>
-          <button mat-icon-button>
-            <a [href]="SProject.twitter" target="_blank">
-              <img class="socials-img" src="assets/socials-assets/twitter-logo.png">
-            </a>
-          </button>
+          <ng-container *ngIf="SProject.notion">
+            <!-- 
+              What do we need?
+              So we'll need the notion logo and then make the href that
+            -->
+            <button mat-icon-button (click)="UserProjectMatch()">
+              <a [href]="SProject.notion">
+                <img class="socials-img" src="assets/socials-assets/notion-logo.png">
+              </a>
+            </button>
+          </ng-container>
+          <ng-container *ngIf="SProject.discord">
+            <button mat-icon-button (click)="UserProjectMatch()">
+              <a [href]="SProject.discord" target="_blank">
+                <img class="socials-img" src="assets/socials-assets/discord-logo.png">
+              </a>
+            </button>
+          </ng-container>
+          <ng-container *ngIf="SProject.twitter">
+            <button mat-icon-button>
+              <a [href]="SProject.twitter" target="_blank">
+                <img class="socials-img" src="assets/socials-assets/twitter-logo.png">
+              </a>
+            </button>
+          </ng-container>
         </div>
       </div>
       <div class="prof-card-wrapper">

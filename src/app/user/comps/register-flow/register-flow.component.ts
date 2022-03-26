@@ -62,7 +62,7 @@ export class RegisterFlowComponent implements OnInit {
 
               if (sessionId) {
                 const stripe = await loadStripe(
-                  'pk_test_51Ia5M2CGxOmPSXOjdhSf7Pbczr7jVbSYmfU4OWREXRHE6Cxcryat6DhJiU2G9dBKBB4ljFuytL82msD30hWBh9qO00cpTHELbp'
+                  'pk_live_51Ia5M2CGxOmPSXOjd6e9PswBFuklNNHG1YI2WbhjbtAipY0ZHl0gU2y6RywfEJXHZZkUkREPNcxLTu9WeYH2Bp1l00jKzeXbSo'
                 );
                 console.log('working on it');
                 await stripe?.redirectToCheckout({ sessionId });
